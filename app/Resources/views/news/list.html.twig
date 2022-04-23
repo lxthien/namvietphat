@@ -1,5 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('build/css/list.css') }}" rel="preload stylesheet" as="style" onload="this.rel='stylesheet'" >
+    <noscript><link rel="stylesheet" href="{{ asset('build/css/list.css') }}" ></noscript>
+{% endblock %}
+
 {% block title %}{{ (category.getPageTitle() is not null ? category.getPageTitle() : category.getName()) ~ ' - Trang ' ~ pagination.currentPageNumber }}{% endblock %}
 {% block description %}{{ (category.getPageDescription() is not null ? category.getPageDescription() : category.getName()) ~ ' - Trang ' ~ pagination.currentPageNumber }}{% endblock %}
 {% block keyword %}{{ category.getPageKeyword() }}{% endblock %}
@@ -11,7 +16,6 @@
 {% endblock %}
 
 {% block body %}
-    {# breadcrumbs #}
     {{ include('news/components/breadcrumbs.html.twig',
         { type: 'category', title: category.getName(), description: category.getDescription() })
     }}
@@ -19,22 +23,22 @@
     <div class="container wrapper-container">
         <div class="row category-list-items">
             <div class="col-12 col-md-12 col-lg-12">
-                {# List item on this page #}
                 {% if pagination|length > 0  %}
-                    {# Sort items #}
-                    {% if get_setting('isShowSortOnCategory') %}
-                        {{ include('news/components/sort.html.twig') }}
-                    {% endif %}
-
                     <div class="list-news-items">
                         <div class="row">
                             {% for row in pagination %}
+                                {{ include('news/components/itemsGrid.html.twig') }}
+                                {{ include('news/components/itemsGrid.html.twig') }}
+                                {{ include('news/components/itemsGrid.html.twig') }}
+                                {{ include('news/components/itemsGrid.html.twig') }}
+                                {{ include('news/components/itemsGrid.html.twig') }}
+                                {{ include('news/components/itemsGrid.html.twig') }}
+                                {{ include('news/components/itemsGrid.html.twig') }}
                                 {{ include('news/components/itemsGrid.html.twig') }}
                             {% endfor %}
                         </div>
                     </div>
 
-                    {# Pagination #}
                     {{ include('news/components/pagination.html.twig') }}
                 {% else %}
                     {{ include('news/components/noRecord.html.twig') }}
@@ -42,7 +46,7 @@
             </div>
         </div>
         
-        <div class="col-12 col-md-12">
+        {# <div class="col-12 col-md-12">
             {{ render(controller(
                 'AppBundle:News:listNewsByCategory', { 'categoryId':11, 'description':'Tổng hợp các dự án xây nhà phố, biệt thự, nhà tiền chế, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
             )) }}
@@ -52,6 +56,6 @@
             {{ render(controller(
                 'AppBundle:News:listNewsByCategory', { 'categoryId':12, 'description':'Tổng hợp các dự án xây dựng, thiết kế, trang trí quán cafe, trà sữa nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
             )) }}
-        </div>
+        </div> #}
     </div>
 {% endblock %}

@@ -4,13 +4,13 @@
 $web-font-path: 'data:text/css;base64,';
 
 @import "~bootswatch/flatly/variables";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "~bootswatch/flatly/bootswatch";
+@import "global/bootstrap";
 
 @import '~bxslider/dist/jquery.bxslider.css';
 @import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
 @import '../../libs/starrating/css/rating.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css');
+@import '~jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.css';
 
 @import "global/fonts";
 @import "global/color_variables";
@@ -18,14 +18,13 @@ $web-font-path: 'data:text/css;base64,';
 @import "global/error";
 @import "global/header";
 @import "global/menu";
-@import "global/partner";
+@import "global/footer";
+@import "global/hotline";
+
 @import "global/sidebar";
 @import "global/pagination";
 @import "global/breadcrumbs";
-@import "global/footer";
-@import "global/hotline";
 @import "global/costs";
 
-@import "pages/homepage";
 @import "pages/news";
 @import "pages/contact";

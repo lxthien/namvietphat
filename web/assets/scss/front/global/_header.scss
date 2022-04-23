@@ -1,20 +1,16 @@
 .header {
     padding: 0;
     background-color: $white;
-    color: $white;
+    color: $primaryColor2;
     height: 40px;
 
     .col-md-6 {
-        &.marquee {
-            height: 40px;
-        }
-
         span {
             line-height: 40px;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 600;
             margin-right: 10px;
             display: inline-block;
-            float: left;
 
             @media only screen and (max-width: 767.98px) {
                 font-size: 14px;
@@ -22,144 +18,26 @@
         }
 
         a {
-            color: $white;
+            color: $primaryColor2;
             line-height: 40px;
 
             &:hover {
                 text-decoration: none;
             }
         }
-
-        marquee {
-            font-size: 16px;
-            font-family: $robotoCondesed;
-            background-color: $white;
-            color: $primaryColor;
-            margin-right: 7px;
-            line-height: 40px;
-            font-weight: 600;
-
-            span {
-                margin-right: 0;
-                display: contents;
-                font-size: 16px;
-            }
-
-            a {
-                color: $primaryColor2;
-            }
-        }
     }
 
     .header-social {
-        position: relative;
-
-        .skew-divider {
-            content: "";
-            background-color: $primaryColor2;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 10000px;
-            -webkit-transform: skew(-35deg);
-            -khtml-transform: skew(-35deg);
-            -moz-transform: skew(-35deg);
-            -ms-transform: skew(-35deg);
-            -o-transform: skew(-35deg);
-            transform: skew(-35deg);
-        }
-
         .header-social-wrapper {
             position: relative;
             padding-left: 15px;
 
             a {
                 padding: 0 5px;
-            }
-        }
-    }
-}
 
-.banner {
-    height: 120px;
-    font-family: $robotoCondesed;
-    background: #f1f1f1;
-
-    #logo_top {
-        padding: 0;
-
-        #logo {
-            float: left;
-            padding: 0;
-            margin-top: 15px;
-
-            a {
-                img {
-                    padding: 10px 0;
-                    width: 85%;
-                }
-            }
-        }
-    }
-
-    .info-top {
-        margin-top: 35px;
-        overflow: hidden;
-
-        &.hotline-top {
-            margin-top: 42px;
-
-            .wp90 {
-                .info-nd {
-                    background: #fff;
-                    border: 2px solid $primaryColor2;
-                    padding: 0 15px;
-                    border-radius: 30px;
-
-                    p {
-                        font-size: 20px;
-                        line-height: 20px;
-                        padding: 5px 0;
-                    }
-                }
-            }
-        }
-
-        .wp90 {
-            width: 90%;
-            float: left;
-
-            .info-nd {
-                p {
-                    margin-bottom: 0;
+                i {
+                    font-size: 20px;
                     color: $primaryColor2;
-                    font-family: $robotoCondesed;
-                    font-size: 17px;
-                    text-align: center;
-                    font-weight: bold;
-
-                    &#header-address {
-                        text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-                    }
-                }
-
-                .tel {
-                    font-weight: bold;
-                    font-family: $robotoCondesed;
-                    font-size: 23px;
-                    line-height: 27px;
-                    color: $primaryColor2;
-
-                    &#header-company {
-                        text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-                    }
-
-                    a {
-                        &:hover {
-                            text-decoration: none;
-                        }
-                    }
                 }
             }
         }

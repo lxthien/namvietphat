@@ -1,46 +1,34 @@
-<div class="col-xs-12 col-sm-4 col-md-3 news-item">
+<div class="col-xs-6 col-sm-4 col-md-3 news-item">
     <div class="news-item-wrapper">
-        <div class="media-thumb">
-            <picture>
-                <!--[if IE 9]><video style="display: none"><![endif]-->
-                <source
-                    data-srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_382_298') }}"
-                    media="(max-width: 639px) 100vw" />
-                <source
-                    data-srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_224_169') }}"
-                    media="(min-width: 640px) and (max-width: 1023px) 50vw" />
-                <source
-                    data-srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_290_220') }}"
-                    media="(min-width: 1024px) 25vw" />
-                <!--[if IE 9]></video><![endif]-->
-                <img
-                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                    data-src="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_290_220') }}"
-                    class="mr-3 img-thumbnail lazyload"
-                    alt="{{row.getTitle()}}" />
-            </picture>
+        <div class="news-thumb">
             {% if category is defined %}
-                <a class="media-thumb" title="{{ row.getTitle() }}" href="{{ path('news_show', {'slug': row.getUrl(), 'cat': category.getUrl() }) }}">
-                    <i class="fa fa-link"></i>
-                </a>
+                {% set url = path('news_show', {'slug': row.getUrl(), 'cat': category.getUrl() }) %}
             {% else %}
-                <a class="media-thumb" title="{{ row.getTitle() }}" href="{{ path('news_show', {'slug': row.getUrl() }) }}">
-                    <i class="fa fa-link"></i>
-                </a>
+                {% set url = path('news_show', {'slug': row.getUrl() }) %}
             {% endif %}
+            <a title="{{ row.getTitle() }}" href="{{ url }}">
+                <picture>
+                    <!--[if IE 9]><video style="display: none"><![endif]-->
+                    <source
+                        data-srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_382_298') }}"
+                        media="(max-width: 639px) 100vw" />
+                    <source
+                        data-srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_290_315') }}"
+                        media="(min-width: 640px) and (max-width: 1023px) 50vw" />
+                    <source
+                        data-srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_290_315') }}"
+                        media="(min-width: 1024px) 25vw" />
+                    <!--[if IE 9]></video><![endif]-->
+                    <img
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                        data-src="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_290_315') }}"
+                        class="mr-3 img-thumbnail lazyload"
+                        alt="{{row.getTitle()}}" />
+                </picture>
+            </a>
         </div>
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">
-                {% if category is defined %}
-                    <a title="{{ row.getTitle() }}" href="{{ path('news_show', {'slug': row.getUrl(), 'cat': category.getUrl() }) }}" title="{{ row.getTitle() }}">
-                        <span>{{ row.getTitle() }}</span>
-                    </a>
-                {% else %}
-                    <a title="{{ row.getTitle() }}" href="{{ path('news_show', {'slug': row.getUrl() }) }}" title="{{ row.getTitle() }}">
-                        <span>{{ row.getTitle() }}</span>
-                    </a>
-                {% endif %}
-            </h5>
+        <div class="news-body">
+            <a title="{{ row.getTitle() }}" href="{{ url }}" title="{{ row.getTitle() }}">{{ row.getTitle() }}</a>
             <p>{{ row.getDescription()|slice(0, 110) }}</p>
         </div>
     </div>

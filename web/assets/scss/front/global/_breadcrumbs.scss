@@ -6,9 +6,11 @@
 
     .breadcrumb {
         padding: 8px 0px;
-        margin-top: 15px;
-        margin-bottom: 5px;
+        margin-top: 20px;
+        margin-bottom: 8px;
         background: none;
+        font-family: 'FiraSansCondensed Regular', sans-serif;
+        font-size: 17px;
 
         @media only screen and (max-width: 767.98px) {
             margin: 5px 0;
@@ -29,6 +31,7 @@
 
     h1.title {
         line-height: 1.1;
+        color: $primaryColor2;
     }
 
     .description {

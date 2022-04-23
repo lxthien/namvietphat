@@ -1,5 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('build/css/homepage.css') }}" rel="preload stylesheet" as="style" onload="this.rel='stylesheet'" >
+    <noscript><link rel="stylesheet" href="{{ asset('build/css/homepage.css') }}" ></noscript>
+{% endblock %}
+
 {% block structuredOrganization %}
     <script type="application/ld+json">
     {
@@ -31,28 +36,96 @@
     </script>
 {% endblock %}
 
-{% block structuredPerson %}
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Person",
-        "name": "Xây Dựng Minh Duy",
-        "url": "https://xaydungminhduy.com/",
-        "sameAs": [
-            "{{ get_setting('linkToFacebook') }}",
-            "{{ get_setting('linkToTwitter') }}",
-            "{{ get_setting('linkToYoutube') }}",
-            "{{ get_setting('linkToLinkedin') }}"
-        ]
-    }
-    </script>
-{% endblock %}
-
 {% block body %}
     <div class="wrapper-container">
-        {{ include('news/components/listPrices.html.twig') }}
+        <section class="block-service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-12">
+                        <h1>Nam Việt Phát Copr</h3>
+                        <p class="p-block-service-1"><strong>Nam Việt Phát Copr</strong> công ty xây dựng nhà uy tín tại TP. HCM. Chuyên cung cấp giải pháp thiết kế nhà, thi công xây nhà phần thô, xây nhà trọn gói, sửa nhà trọn gói uy tín số 1 tại TP HCM</p>
+                        <p class="p-block-service-2"><strong>Dịch vụ của chúng tôi gồm có:</strong></p>
+                        <div class="content_dv_baogia">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <h2>Thiết kế nhà phố</h2>
+                                        <span class="img_h"><img src="{{ asset('assets/images/icon_thietkenha.png') }}" alt="Thiết kế nhà phố"></span>
+                                        <span class="img_hover"><img src="{{ asset('assets/images/icon_thietkenha_h.png') }}" alt="Thiết kế nhà phố"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <h2>Xây dựng nhà</h2>
+                                        <span class="img_h"><img src="{{ asset('assets/images/icon_xaybietthu.png') }}" alt="Xây nhà biệt thự"></span>
+                                        <span class="img_hover"><img src="{{ asset('assets/images/icon_xaybietthu_h.png') }}" alt="Xây nhà biệt thự"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <h2>Sửa chữa nhà</h2>
+                                        <span class="img_h"><img src="{{ asset('assets/images/icon_suanha.png') }}" alt="Sửa chữa nhà"></span>
+                                        <span class="img_hover"><img src="{{ asset('assets/images/icon_suanha_h.png') }}" alt="Sửa chữa nhà"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <h2>Xin GPXD</h2>
+                                        <span class="img_h"><img src="{{ asset('assets/images/icon_xaynha.png') }}" alt="Dự án xây nhà"></span>
+                                        <span class="img_hover"><img src="{{ asset('assets/images/icon_xaynha_h.png') }}" alt="Dự án xây nhà"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-12">
+                        <div class="content_area_baogia">	
+                            <div class="mobile img_baogia_positon">
+                                <img src="{{ asset('assets/images/bg_dich_vu.jpg') }}" alt="bao gia">
+                            </div>
+                            <div class="content_img_baogia">
+                                <div class="content_img_baogia_top">
+                                    <h2 class="text-uppercase"><strong>ĐƠN GIÁ THIẾT KẾ, XÂY DỰNG NHÀ, SỬA CHỮA NHÀ</strong></h2>
+                                    <p class="p-block-service-1">Nam Việt Phát Copr với đội ngũ nhân sự có trình độ chuyên môn cao, năng động và nhiệt huyết với sự phát triển của công ty.</p>
+                                    <p class="p-block-service-1">Cùng với đội ngũ kiến trúc sư tận tâm, nhiệt tình và sáng tạo, đội ngũ thi công lành nghề, giàu kinh nghiệm, giỏi chuyên môn trong việc xây dựng tại công trình sẽ cam kết mang đến cho quý khách hàng một ngôi nhà hoàn hảo nhất.</p>
+                                    <p class="text-uppercase p-block-service-3"><strong>Nam Việt Phát Copr – XÂY DỰNG TOÀN TÂM - NÂNG TẦM CUỘC SỐNG</strong></p>
+                                </div>
+                                <div class="content_img_banggia">
+                                    <ul class="list_baogia">
+                                        <li>	
+                                            <a href="">
+                                                <span class="baogia_img"><img src="{{ asset('assets/images/bg_trongoi.png') }}" alt="Đơn giá xây nhà trọn gói năm 2022"></span>
+                                                <span class="text-bg">ĐƠN GIÁ<br>xây nhà trọn gói</span>
+                                            </a>
+                                        </li>
+                                        <li>	
+                                            <a href="">
+                                                <span class="baogia_img"><img src="{{ asset('assets/images/bg_xaytho.png') }}" alt="Đơn giá xây nhà phần thô TPHCM 2022"></span>
+                                                <span class="text-bg">ĐƠN GIÁ<br>xây nhà phần thô</span>
+                                            </a>
+                                        </li>
+                                        <li>	
+                                            <a href="">
+                                                <span class="baogia_img"><img src="{{ asset('assets/images/bg_suanha.png') }}" alt="Đơn giá sửa chữa nhà trọn gói năm 2022"></span>
+                                                <span class="text-bg">ĐƠN GIÁ <br>sửa chữa nhà</span>
+                                            </a>
+                                        </li>
+                                        <li>	
+                                            <a href="">
+                                                <span class="baogia_img"><img src="{{ asset('assets/images/bg_thietke.png') }}" alt="Đơn giá thiết kế xây dựng nhà phố, biệt thự năm 2022"></span>
+                                                <span class="text-bg">ĐƠN GIÁ<br>thiết kế nhà</span>
+                                            </a>
+                                        </li>	
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="wrapper-container-item why-choose-us">
+        <div class="why-choose-us hidden">
             <div class="container">
                 <div class="row">
                     <h2 class="text-center text-uppercase why-choose-us-title">Cam kết của chúng tôi</h2>
@@ -185,21 +258,37 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 title-list-news-items">
-                                <p class="text-center text-uppercase p-title-news-items">
-                                    <img alt="{{ blockOnHomepage.category.getName() }}" src="{{ asset('assets/images/icon-logo.png') }}" width="30" height="25" />
-                                    <i class="fas fa-angle-right"></i>
+                                <p class="text-uppercase p-title-news-items">
+                                    <img alt="{{ blockOnHomepage.category.getName() }}" src="{{ asset('assets/images/logo-icon.png') }}" width="35" height="25">
+                                    <i class="fa fa-angle-right"></i>
                                     <a href="{{ path('news_category', {'level1': blockOnHomepage.category.getUrl() }) }}" title="{{ blockOnHomepage.category.getName() }}">{{ blockOnHomepage.category.getName() }}</a>
                                 </p>
-                                <span class="text-center block-underline"></span>
+                                <span class="block-underline"></span>
                                 <p>{{ blockOnHomepage.description }}</p>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-tabs-sub-cat" role="tablist">
+                                    {% for listSubTab in blockOnHomepage.listSubTabs %}
+                                        <li role="presentation" {{ loop.index == 1 ? 'class="active"' : '' }}><a href="#tab_{{ listSubTab.getId() }}" role="tab" data-toggle="tab">{{ listSubTab.getName() }}</a></li>
+                                    {% endfor %}
+                                </ul>
                             </div>
 
-                            <div class="col-md-12 list-news-items">
-                                <div class="row">
-                                    {% for row in blockOnHomepage.posts %}
-                                        {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                    {% endfor %}
-                                </div>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                {% for listSubTab in blockOnHomepage.listSubTabs %}
+                                    <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? 'active' : '' }}" id="tab_{{ listSubTab.getId() }}">
+                                        <div class="col-md-12 list-news-items">
+                                            <div class="row">
+                                                {% for row in blockOnHomepage.posts %}
+                                                    {{ include('news/components/itemsGridHomepage.html.twig') }}
+                                                    {{ include('news/components/itemsGridHomepage.html.twig') }}
+                                                    {{ include('news/components/itemsGridHomepage.html.twig') }}
+                                                    {{ include('news/components/itemsGridHomepage.html.twig') }}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

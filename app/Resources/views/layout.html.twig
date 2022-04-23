@@ -3,14 +3,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
-
-        <!-- dns prefetch -->
-        <meta http-equiv="x-dns-prefetch-control" content="on">
-        <link rel="dns-prefetch" href="//facebook.com/">
-        <link rel="dns-prefetch" href="//www.google-analytics.com/">
-        <link rel="dns-prefetch" href="//www.youtube.com/">
-        <link rel="dns-prefetch" href="//s7.addthis.com/">
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com/" >
         
         <!-- https://realfavicongenerator.net -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
@@ -24,7 +16,6 @@
         <title>{% block title %}{{ get_setting('pageTitle') }}{% endblock %}</title>
         <meta name="description" content="{% block description %}{{ get_setting('pageDescription') }}{% endblock %}">
         <meta name="keywords" content="{% block keyword %}{{ get_setting('pageKeyword') }}{% endblock %}">
-        
         <meta name="robots" content="index, follow" />
         <meta name="revisit-after" content="1 days">
         <meta http-equiv="content-language" content="vi">
@@ -44,15 +35,14 @@
             <meta property="og:url" content="{{ app.request.uri }}" />
         {% endif %}
         <meta property="og:site_name" content="{{ get_setting('siteName') }}" />
-        <meta property="fb:app_id" content="1384538691837107" />
         <!-- Open Graph data -->
 
         <!-- Twitter Card data -->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@xaydungminhduy">
+        <meta name="twitter:site" content="@namvietphat">
         <meta name="twitter:title" content="{{ block('title') }}">
         <meta name="twitter:description" content="{{ block('description') }}">
-        <meta name="twitter:creator" content="@xaydungminhduy">
+        <meta name="twitter:creator" content="@namvietphat">
         {% block twitterImage %}
         {% endblock %}
         <!-- Twitter Card data -->
@@ -71,17 +61,11 @@
 
         {{ get_setting('googleAnalytic')|raw }}
 
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PKBMR78');</script>
-        <!-- End Google Tag Manager -->
-
         <!-- Custom css -->
+        <style type="text/css">
+            {{ source('@web/css/app.css', ignore_missing = true) }}
+        </style>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
         {% endblock %}
     </head>
     <body>
@@ -101,11 +85,6 @@
             {% endblock %}
 
             {{ get_setting('facebookMessenger')|raw }}
-
-            <!-- Google Tag Manager (noscript) -->
-            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKBMR78"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-            <!-- End Google Tag Manager (noscript) -->
         </div>
     </body>
 </html>

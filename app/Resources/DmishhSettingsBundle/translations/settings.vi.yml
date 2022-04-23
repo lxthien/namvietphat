@@ -26,12 +26,13 @@ labels:
   facebookMessenger: Script facebook messenger
   displayNameCommentAs: Tên hiển thị tại mục bình luận
   linkToFacebook: Facebook
-  linkToGooglePlus: Google Plus
+  linkToPinterest: Pinterest
   linkToTwitter: Twitter
   linkToYoutube: Youtube
   linkToLinkedin: Linkedin
   dmcaScript: DMCA Script
   companyAddress: Address Company
   companyWebsite: Website Company
+  tax: MST
   siteNameDescription: Site Description
   addressInPost: Address In Post

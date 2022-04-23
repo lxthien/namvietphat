@@ -3,22 +3,20 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <picture>
                     <source
-                        srcset="{{ asset('assets/images/banner/minhduy-banner-1.jpg') | imagine_filter('banner_768_400') }}"
+                        srcset="{{ asset('assets/images/banner/camketchatluong.jpg') | imagine_filter('banner_768_400') }}"
                         media="(max-width: 799px)" />
                     <source
-                        srcset="{{ asset('assets/images/banner/minhduy-banner-1.jpg') | imagine_filter('banner_1360_550') }}"
+                        srcset="{{ asset('assets/images/banner/camketchatluong.jpg') | imagine_filter('banner_1920_650') }}"
                         media="(min-width: 800px)" />
                     <img
                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                        data-src="{{ asset('assets/images/banner/minhduy-banner-1.jpg') | imagine_filter('banner_1360_550') }}"
+                        data-src="{{ asset('assets/images/banner/camketchatluong.jpg') | imagine_filter('banner_1920_650') }}"
                         alt="Công ty xây dựng uy tín, chuyên nghiệp"
                         class="lazyload" />
                 </picture>
@@ -29,66 +27,22 @@
                 </div>
             </div>
             <div class="item">
-                <a href="{{ path('news_show', {'slug': 'thiet-ke-thi-cong-tron-goi-quan-cafe' }) }}">
-                    <picture>
-                        <source
-                            srcset="{{ asset('assets/images/banner/thiet-ke-thi-cong-quan-cafe-1.jpg') | imagine_filter('banner_768_400') }}"
-                            media="(max-width: 799px)" />
-                        <source
-                            srcset="{{ asset('assets/images/banner/thiet-ke-thi-cong-quan-cafe-1.jpg') | imagine_filter('banner_1360_550') }}"
-                            media="(min-width: 800px)" />
-                        <img
-                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                            data-src="{{ asset('assets/images/banner/thiet-ke-thi-cong-quan-cafe-1.jpg') | imagine_filter('banner_1360_550') }}"
-                            alt="Xây nhà phố 3 tầng, Thầy Hạnh"
-                            class="lazyload" />
-                    </picture>
-                </a>
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        <h3>Thiết kế, thi công quán Cafe</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <a href="{{ path('news_show', {'slug': 'bao-gia-sua-nha-tron-goi' }) }}">
-                    <picture>
-                        <source
-                            srcset="{{ asset('assets/images/banner/minhduy-cong-ty-sua-nha-1.jpg') | imagine_filter('banner_768_400') }}"
-                            media="(max-width: 799px)" />
-                        <source
-                            srcset="{{ asset('assets/images/banner/minhduy-cong-ty-sua-nha-1.jpg') | imagine_filter('banner_1360_550') }}"
-                            media="(min-width: 800px)" />
-                        <img
-                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                            data-src="{{ asset('assets/images/banner/minhduy-cong-ty-sua-nha-1.jpg') | imagine_filter('banner_1360_550') }}"
-                            alt="Công ty sửa nhà uy tín tại TPHCM"
-                            class="lazyload" />
-                    </picture>
-                </a>
-                <div class="container">
-                    <div class="carousel-caption text-left">
-                        <h3>Công ty sửa nhà uy tín tại TPHCM</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
                 <picture>
                     <source
-                        srcset="{{ asset('assets/images/banner/banner-cafe-cach-coffee-1.jpg') | imagine_filter('banner_768_400') }}"
+                        srcset="{{ asset('assets/images/banner/camketchatluong.jpg') | imagine_filter('banner_768_400') }}"
                         media="(max-width: 799px)" />
                     <source
-                        srcset="{{ asset('assets/images/banner/banner-cafe-cach-coffee-1.jpg') | imagine_filter('banner_1360_550') }}"
+                        srcset="{{ asset('assets/images/banner/camketchatluong.jpg') | imagine_filter('banner_1920_650') }}"
                         media="(min-width: 800px)" />
                     <img
                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                        data-src="{{ asset('assets/images/banner/banner-cafe-cach-coffee-1.jpg') | imagine_filter('banner_1360_550') }}"
-                        alt="Thi công quán cafe Cách"
+                        data-src="{{ asset('assets/images/banner/camketchatluong.jpg') | imagine_filter('banner_1920_650') }}"
+                        alt="Công ty xây dựng uy tín, chuyên nghiệp"
                         class="lazyload" />
                 </picture>
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h2>Thi công quán cafe Cách</h2>
+                        <h2>Công ty xây dựng uy tín, chuyên nghiệp</h2>
                     </div>
                 </div>
             </div>
@@ -102,4 +56,5 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    {{ include('layout/marquee.html.twig') }}
 {% endif %}

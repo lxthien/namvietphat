@@ -3,6 +3,7 @@
 require('bxslider/dist/jquery.bxslider');
 require('@fancyapps/fancybox');
 require('../../../libs/starrating/js/rating.js');
+require('jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.js');
 
 function initSearchBox() {
     var $formSearch = $('#form-search');
@@ -77,7 +78,7 @@ function initFixedMenu() {
         var $scrollUp = $('.td-scroll-up');
         var scroll = $(window).scrollTop();
     
-        if (scroll >= 160) {
+        if (scroll >= 139) {
             $nav.addClass("navbar-fixed-top");
             $scrollUp.removeClass("hidden");
         } else {
@@ -267,11 +268,13 @@ function initTypewriterEffect() {
 exports.init = function () {
     initSearchBox();
     initProjectHotSlider();
-    initNewsSlider();
+    //initNewsSlider();
     initProtectedContent();
     initGoToTop();
     initFixedMenu();
     initCostConstruction();
     initFancybox();
     initTypewriterEffect();
+
+    $('.nav-tabs').scrollingTabs();
 };

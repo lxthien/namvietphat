@@ -1,5 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('build/css/list.css') }}" rel="preload stylesheet" as="style" onload="this.rel='stylesheet'" >
+    <noscript><link rel="stylesheet" href="{{ asset('build/css/list.css') }}" ></noscript>
+{% endblock %}
+
 {% block title %}
     {{ 'post.archives.title'|trans({'%title%': tag.getPageTitle() is not null ? tag.getPageTitle() : tag.getName(), '%currentPage%': pagination.currentPageNumber, '%totalPage%': pagination.pageCount}) }}
 {% endblock %}
@@ -23,13 +28,7 @@
     <div class="container wrapper-container">
         <div class="row category-list-items">
             <div class="col-12 col-md-12 col-lg-12">
-                {# List item on this page #}
                 {% if pagination|length > 0  %}
-                    {# Sort #}
-                    {% if get_setting('isShowSortOnCategory') %}
-                        {{ include('news/components/sort.html.twig') }}
-                    {% endif %}
-
                     <div class="list-news-items">
                         <div class="row">
                             {% for row in pagination %}
@@ -44,18 +43,6 @@
                     {{ include('news/components/noRecord.html.twig') }}
                 {% endif %}
             </div>
-        </div>
-
-        <div class="col-12 col-md-12">
-            {{ render(controller(
-                'AppBundle:News:listNewsByCategory', { 'categoryId':11, 'description':'Tổng hợp các dự án xây nhà phố, biệt thự, nhà tiền chế, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-            )) }}
-            {{ render(controller(
-                'AppBundle:News:listNewsByCategory', { 'categoryId':10, 'description':'Tổng hợp các dự án sửa chữa nhà, cải tạo nhà cũ, nâng tầng, nâng nền, căn hộ chung cư, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-            )) }}
-            {{ render(controller(
-                'AppBundle:News:listNewsByCategory', { 'categoryId':12, 'description':'Tổng hợp các dự án xây dựng, thiết kế, trang trí quán cafe, trà sữa nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-            )) }}
         </div>
     </div>
 {% endblock %}

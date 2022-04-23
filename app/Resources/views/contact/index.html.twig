@@ -1,5 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('build/css/contact.css') }}" rel="preload stylesheet" as="style" onload="this.rel='stylesheet'" >
+    <noscript><link rel="stylesheet" href="{{ asset('build/css/contact.css') }}" ></noscript>
+{% endblock %}
+
 {% block title %}{{ post.getPageTitle() is not null ? post.getPageTitle() : post.getTitle() }}{% endblock %}
 {% block description %}{{ post.getPageDescription() is not null ? post.getPageDescription() : post.getDescription() }}{% endblock %}
 {% block keyword %}{{ post.getPageKeyword() }}{% endblock %}
@@ -12,16 +17,12 @@
 
 {% block body %}
     <div class="container contacts wrapper-post-container">
-        {{ include('news/components/listPrices.html.twig', {hasContainer:false}) }}
-
         <div class="row post-container">
-            {{ include('layout/sidebar.html.twig') }}
-            
-            <div class="col-xs-12 col-sm-12 col-md-9">
+            <div class="col-xs-12 col-sm-12 col-md-8">
                 {{ include('news/components/breadcrumbs.html.twig') }}
                 
                 <div class="company">
-                    <h1 class="text-uppercase h1-title-contact">Xây Dựng Minh Duy</h1>
+                    <h1 class="text-uppercase h1-title-contact">{{ get_setting('siteName') }}</h1>
                     <ul>
                         <li>
                             <i class="fa fa-map-marker"></i>
@@ -29,7 +30,7 @@
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
-                            <span><strong>{{ get_setting('hotLine1') }} - A Minh</strong></span>
+                            <span><strong>{{ get_setting('hotLine1') }}</strong></span>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
@@ -38,6 +39,10 @@
                         <li>
                             <i class="fab fa-internet-explorer"></i>
                             <span><strong>{{ get_setting('companyWebsite') }}</strong></span>
+                        </li>
+                        <li>
+                            <i class="fab fa-gitkraken"></i>
+                            <span><strong>MST: <span>{{ get_setting('tax') }}</strong></span>
                         </li>
                     </ul>
                 </div>
@@ -58,17 +63,7 @@
                 {{ form_end(form) }}
             </div>
 
-            <div class="col-12 col-md-12">
-                {{ render(controller(
-                    'AppBundle:News:listNewsByCategory', { 'categoryId':11, 'description':'Tổng hợp các dự án xây nhà phố, biệt thự, nhà tiền chế, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-                )) }}
-                {{ render(controller(
-                    'AppBundle:News:listNewsByCategory', { 'categoryId':10, 'description':'Tổng hợp các dự án sửa chữa nhà, cải tạo nhà cũ, nâng tầng, nâng nền, căn hộ chung cư, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-                )) }}
-                {{ render(controller(
-                    'AppBundle:News:listNewsByCategory', { 'categoryId':12, 'description':'Tổng hợp các dự án xây dựng, thiết kế, trang trí quán cafe, trà sữa nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-                )) }}
-            </div>
+            {{ include('layout/sidebar.html.twig') }}
         </div>
     </div>
 {% endblock %}

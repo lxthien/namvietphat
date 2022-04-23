@@ -1,68 +1,34 @@
 <!-- Begin header -->
 <div class="wrapper-container header d-none hidden-xs hidden-sm">
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-8 col-md-6 marquee">
-                <marquee scrollamount="7">{{ get_setting('marqueeHomepage')|raw }}</marquee>
+        <div class="row header-top">
+            <div class="col-12 col-sm-8 col-md-6">
+                <span class="text-left">
+                    <i class="fas fa-mobile"></i>
+                    <a href="tel:{{ get_setting('hotLine2') }}">{{ get_setting('hotLine1') }}</a>
+                </span>
+                <span class="text-left">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:{{ get_setting('emailContact') }}">{{ get_setting('emailContact') }}</a>
+                </span>
             </div>
             <div class="col-12 col-sm-4 col-md-6 text-right header-social hidden-xs">
-                <div class="skew-divider"></div>
                 <div class="header-social-wrapper">
-                    <span class="text-left">
-                        <i class="fa fa-phone"></i>
-                        <a href="tel:{{ get_setting('hotLine2') }}">{{ get_setting('hotLine1') }}</a>
-                    </span>
-                    <span class="text-left">
-                        <i class="fa fa-envelope-o"></i>
-                        <a href="mailto:{{ get_setting('emailContact') }}">{{ get_setting('emailContact') }}</a>
-                    </span>
-                    <a target="_blank" href="{{ get_setting('linkToFacebook') }}" title="Xây Dựng Minh Duy trên Facebook">
+                    <a target="_blank" href="{{ get_setting('linkToFacebook') }}" title="Nam Việt Phát trên Facebook" rel="nofollow noreferrer">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a target="_blank" href="{{ get_setting('linkToTwitter') }}" title="Xây Dựng Minh Duy trên Twitter">
+                    <a target="_blank" href="{{ get_setting('linkToTwitter') }}" title="Nam Việt Phát trên Twitter" rel="nofollow noreferrer">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a target="_blank" href="{{ get_setting('linkToYoutube') }}" title="Xây Dựng Minh Duy trên Youtube">
+                    <a target="_blank" href="{{ get_setting('linkToYoutube') }}" title="Nam Việt Phát trên Youtube" rel="nofollow noreferrer">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a target="_blank" href="{{ get_setting('linkToLinkedin') }}" title="Xây Dựng Minh Duy trên Linkedin">
+                    <a target="_blank" href="{{ get_setting('linkToLinkedin') }}" title="Nam Việt Phát trên Linkedin" rel="nofollow noreferrer">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a target="_blank" href="{{ get_setting('linkToGooglePlus') }}" title="Xây Dựng Minh Duy trên Google Plus">
-                        <i class="fab fa-google-plus"></i>
+                    <a target="_blank" href="{{ get_setting('linkToPinterest') }}" title="Nam Việt Phát trên Pinterest" rel="nofollow noreferrer">
+                        <i class="fab fa-pinterest"></i>
                     </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="wrapper-container banner d-none hidden-xs hidden-sm">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4" id="logo_top">
-                <div id="logo">								
-                    <a href="{{ path('homepage') }}" title="{{ get_setting('siteName') }}">
-                        <img alt="{{ get_setting('siteName') }}" src="{{ asset('assets/images/logo.png') }}" width="354" height="72" >
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="info-top">
-                    <div class="wp90">
-                        <div class="info-nd" id="output">
-                            <p class="tel text-uppercase" id="header-company"></p>
-                            <p class="text-uppercase" id="header-address"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="info-top hotline-top">
-                    <div class="wp90 pull-right">
-                        <div class="info-nd">
-                            <p class="tel text-uppercase"><i class="fas fa-mobile-alt"></i> <a href="tel:{{ get_setting('hotLine2') }}">{{ get_setting('hotLine1') }}</a></p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -27,15 +27,15 @@ class ContactController extends Controller
         $contact = new Contact();
         
         $form = $this->createFormBuilder($contact)
-            ->add('name', TextType::class, array('label' => 'label.author'))
-            ->add('email', EmailType::class, array('label' => 'label.author_email'))
-            ->add('phone', TextType::class, array('label' => 'label.phone'))
+            ->add('name', TextType::class, array('label' => 'label.author', 'attr' => array('placeholder' => 'Nhập tên của bạn')))
+            ->add('email', EmailType::class, array('label' => 'label.author_email', 'required' => false, 'attr' => array('placeholder' => 'Nhập email của bạn')))
+            ->add('phone', TextType::class, array('label' => 'label.phone', 'attr' => array('placeholder' => 'Nhập SĐT của bạn')))
             ->add('contents', TextareaType::class, array(
                 'label' => 'label.content',
-                'attr' => array('rows' => '7')
+                'attr' => array('rows' => '7', 'placeholder' => 'Nhập nội dung yêu cầu')
             ))
             ->add('recaptcha', EWZRecaptchaType::class)
-            ->add('send', SubmitType::class, array('label' => 'label.send', 'attr' => array('class' => 'btn btn-primary')))
+            ->add('send', SubmitType::class, array('label' => 'Liên hệ', 'attr' => array('class' => 'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);

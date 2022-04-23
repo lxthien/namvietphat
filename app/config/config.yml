@@ -157,6 +157,10 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [218, 150], mode: outbound }
+        news_188_120:
+            quality: 75
+            filters:
+                thumbnail: { size: [188, 120], mode: outbound }
         news_70_50:
             quality: 75
             filters:
@@ -177,6 +181,10 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [290, 220], mode: outbound }
+        news_370_260:
+            quality: 100
+            filters:
+                thumbnail: { size: [370, 260], mode: outbound }
         news_382_298:
             quality: 100
             filters:
@@ -185,18 +193,18 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [224, 169], mode: outbound }
+        news_290_315:
+            quality: 100
+            filters:
+                thumbnail: { size: [290, 315], mode: outbound }
         banner_768_400:
             quality: 100
             filters:
                 thumbnail: { size: [768, 400], mode: outbound }
-        banner_1500_500:
+        banner_1920_650:
             quality: 100
             filters:
-                thumbnail: { size: [1500, 500], mode: outbound }
-        banner_1360_550:
-            quality: 100
-            filters:
-                thumbnail: { size: [1360, 550], mode: outbound }
+                thumbnail: { size: [1920, 650], mode: outbound }
 
 # KnpPaginationBundle
 knp_paginator:

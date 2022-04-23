@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: $arial;
     font-size: 16px;
     color: $black;
     background: $gray94;
@@ -48,7 +48,7 @@ body {
 }
 
 .wrapper-container {
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 }
 
 .td-wrapper {
@@ -62,7 +62,7 @@ header, nav, section, article, figure, aside, footer {
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 15px;
     line-height: 1.4;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: $firaSansCondensedBold;
 }
 
 img {

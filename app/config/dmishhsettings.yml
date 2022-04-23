@@ -58,6 +58,10 @@ dmishh_settings:
             type: Symfony\Component\Form\Extension\Core\Type\TextType
             options:
                 required: false
+        tax:
+            type: Symfony\Component\Form\Extension\Core\Type\TextType
+            options:
+                required: false
         marqueeHomepage:
             type: Symfony\Component\Form\Extension\Core\Type\TextareaType
             options:
@@ -90,7 +94,7 @@ dmishh_settings:
             type: Symfony\Component\Form\Extension\Core\Type\TextType
             options:
                 required: false
-        linkToGooglePlus:
+        linkToPinterest:
             type: Symfony\Component\Form\Extension\Core\Type\TextType
             options:
                 required: false

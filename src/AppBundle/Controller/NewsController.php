@@ -99,24 +99,6 @@ class NewsController extends Controller
                 ->setParameter('enable', 1)
                 ->orderBy('n.createdAt', 'DESC')
                 ->getQuery()->getResult();
-
-            // No items on this page
-            if (count($news) === 0) {
-                $tag = $this->getDoctrine()
-                    ->getRepository(Tag::class)
-                    ->findOneBy(
-                        array('url' => $level1)
-                    );
-
-                $news = $this->getDoctrine()
-                    ->getRepository(News::class)
-                    ->createQueryBuilder('n')
-                    ->innerJoin('n.tags', 't')
-                    ->where('t.id = :tags_id')
-                    ->setParameter('tags_id', $tag->getId())
-                    ->orderBy('n.createdAt', 'DESC')
-                    ->getQuery()->getResult();
-            }
         } else {
             $news = $this->getDoctrine()
                 ->getRepository(News::class)

@@ -1,5 +1,19 @@
+@media screen and (min-width:768px){
+    .navbar-brand-centered {
+        position: absolute;
+        left: 43.5%;
+        display: block;
+        width: 160px;
+        text-align: center;
+    }
+
+    .navbar>.container .navbar-brand-centered, 
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+    }
+}
+
 #nav {
-    background-color: $primaryColor2;
     z-index: 10000;
 
     .nav-container {
@@ -29,19 +43,21 @@
                 .navbar-brand {
                     padding: 5px 0;
                     height: auto;
+                    margin-top: -9px;
 
-                    @media only screen and (max-width : 768px) {
-                        padding-top: 5px;
+                    @media only screen and (max-width: 767.98px) {
+                        padding: 4px 0;
+                        margin-top: 0;
                         width: 85%;
                         float: right;
                         text-align: center;
                     }
     
                     img {
-                        width: 100px;
+                        width: 130px;
     
                         @media only screen and (max-width : 768px) {
-                            width: 55px;
+                            width: 68px;
                             margin: 0 auto;
                             vertical-align: middle;
                         }
@@ -49,13 +65,19 @@
                 }
     
                 .navbar-toggle {
-                    border-color: $white;
+                    border-color: $primaryColor2;
                     float: left;
                     margin-right: 0px;
                     padding: 8px 10px;
+
+                    @media only screen and (max-width: 767.98px) {
+                        &:focus, &:hover {
+                            background-color: $white;
+                        }
+                    }
     
                     .icon-bar {
-                        background-color: $white;
+                        background-color: $primaryColor2;
                     }
                 }
             }
@@ -64,7 +86,6 @@
                 border-width: 0px;
                 box-shadow: none;
                 padding: 0;
-                position: relative;
     
                 @media only screen and (max-width: 767.98px) {
                     width: 100%;
@@ -72,6 +93,10 @@
                 }
     
                 .navbar-nav {
+                    &.navbar-right {
+                        margin-right: 0;
+                    }
+
                     @media only screen and (max-width: 767.98px) {
                         margin: 0;
                     }
@@ -89,7 +114,7 @@
                                 bottom: 0px;
                                 left: 0;
                                 height: 3px;
-                                background: $white;
+                                background: $primaryColor2;
                                 z-index: 10001;
                             }
                         }
@@ -102,20 +127,19 @@
                                 bottom: 0px;
                                 left: 0;
                                 height: 3px;
-                                background: $white;
+                                background: $primaryColor2;
                                 z-index: 10001;
                             }
                         }
                     }
     
                     a {
-                        padding: 12px 15px;
-                        font-weight: 500;
-                        font-size: 16px;
+                        padding: 39px 12px;
+                        font-size: 18px;
                         text-transform: uppercase;
-                        font-family: $robotoCondesed;
-                        color: $white;
-                        text-shadow: 0.2px 0.2px 0.2px $white;
+                        font-family: $firaSansCondensedBold;
+                        color: $primaryColor2;
+                        text-shadow: 0.2px 0.2px 0.2px $primaryColor2;
 
                         &:focus, &:hover {
                             background: transparent;
@@ -125,12 +149,6 @@
                             padding: 10px;
                             font-size: 15px;
                             border-bottom: 1px dotted $geyser;
-                            color: $white;
-                            text-shadow: 0.2px 0.2px 0.2px $white;
-                        }
-
-                        i {
-                            margin-right: 0;
                         }
                     }
 
@@ -177,11 +195,6 @@
     
                                 a {
                                     padding: 10px 0;
-                                    color: $primaryColor;
-    
-                                    &:focus, &:hover {
-                                        
-                                    }
                                 }
                             }
                         }
@@ -247,24 +260,21 @@
 
 #nav {
     &.navbar-fixed-top {
-        opacity: 0.9;
-
-        .nav-container .navbar {
-            min-height: auto;
-        }
+        background-color: $white;
 
         .nav-container .navbar {
             .navbar-header .navbar-brand {
                 padding: 5px 0;
+                margin-top: 0;
 
                 img {
-                    width: 56px;
+                    width: 68px;
                 }
             }
 
             .navbar-collapse {
                 ul li a {
-                    padding: 12px 15px;
+                    padding: 20px 15px;
 
                     @media only screen and (max-width: 767.98px) {
                         padding: 10px;
