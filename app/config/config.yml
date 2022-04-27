@@ -20,6 +20,7 @@ parameters:
     app.path.product_images: "/uploads/images/products"
     app.path.news_images: "/uploads/images/news"
     app.path.banner_images: "/uploads/images/banner"
+    app.path.testimonial_images: "/uploads/images/testimonial"
 
 # Basic configuration for the Symfony framework features
 framework:
@@ -119,6 +120,12 @@ vich_uploader:
             namer: vich_uploader.namer_origname
             delete_on_remove: true
             delete_on_update: true
+        testimonial_images:
+            uri_prefix:         '%app.path.testimonial_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/testimonial'
+            namer: vich_uploader.namer_origname
+            delete_on_remove: true
+            delete_on_update: true
 
 
 # LiipImagineBundle
@@ -153,18 +160,14 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [50, 50], mode: outbound }
-        news_thumb:
-            quality: 75
-            filters:
-                thumbnail: { size: [218, 150], mode: outbound }
         news_188_120:
             quality: 75
             filters:
                 thumbnail: { size: [188, 120], mode: outbound }
-        news_70_50:
+        news_50_50:
             quality: 75
             filters:
-                thumbnail: { size: [70, 50], mode: outbound }
+                thumbnail: { size: [50, 50], mode: outbound }
         news_382_285:
             quality: 75
             filters:
@@ -173,18 +176,10 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [406, 280], mode: outbound }
-        news_564_440:
-            quality: 100
-            filters:
-                thumbnail: { size: [564, 440], mode: outbound }
         news_290_220:
             quality: 100
             filters:
                 thumbnail: { size: [290, 220], mode: outbound }
-        news_370_260:
-            quality: 100
-            filters:
-                thumbnail: { size: [370, 260], mode: outbound }
         news_382_298:
             quality: 100
             filters:

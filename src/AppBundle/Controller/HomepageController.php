@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\NewsCategory;
 use AppBundle\Entity\News;
+use AppBundle\Entity\Testimonial;
 
 class HomepageController extends Controller
 {
@@ -31,31 +32,39 @@ class HomepageController extends Controller
                         $listSubIds = explode(",", $listCategoriesOnHomepage[$i]["subId"]);
                         $listSubTabs = [];
 
-                        $allSubCategories = $this->getDoctrine()
-                            ->getRepository(NewsCategory::class)
-                            ->createQueryBuilder('c')
-                            ->where('c.parentcat = (:parentcat)')
-                            ->setParameter('parentcat', $category->getId())
-                            ->getQuery()->getResult();
+                        if ($listCategoriesOnHomepage[$i]["subId"] != null && count($listSubIds) > 0) {
+                            for ($j = 0; $j < count($listSubIds); $j++) {
+                                $subCat = $this->getDoctrine()
+                                        ->getRepository(NewsCategory::class)
+                                        ->find($listSubIds[$j]);
 
-                        foreach ($allSubCategories as $value) {
-                            $listCategoriesIds[] = $value->getId();
+                                if ($subCat) {
+                                    $posts = $this->getDoctrine()
+                                        ->getRepository(News::class)
+                                        ->createQueryBuilder('n')
+                                        ->innerJoin('n.category', 't')
+                                        ->where('t.id =:subCat')
+                                        ->andWhere('n.enable = :enable')
+                                        ->setParameter('subCat', $subCat->getId())
+                                        ->setParameter('enable', 1)
+                                        ->orderBy('n.createdAt', 'DESC')
+                                        ->getQuery()->getResult();
+                                }
 
-                            if (in_array($value->getId(), $listSubIds)) {
-                                $listSubTabs[] = $value;
+                                $listSubTabs[] = (object) array('subCategoryId' => $subCat->getId(), 'subCategoryName' => $subCat->getName(), 'posts' => $posts);
                             }
+                        } else {
+                            $posts = $this->getDoctrine()
+                                ->getRepository(News::class)
+                                ->createQueryBuilder('n')
+                                ->innerJoin('n.category', 't')
+                                ->where('t.id =:subCat')
+                                ->andWhere('n.enable = :enable')
+                                ->setParameter('subCat', $category->getId())
+                                ->setParameter('enable', 1)
+                                ->orderBy('n.createdAt', 'DESC')
+                                ->getQuery()->getResult();
                         }
-
-                        $posts = $this->getDoctrine()
-                            ->getRepository(News::class)
-                            ->createQueryBuilder('n')
-                            ->innerJoin('n.category', 't')
-                            ->where('t.id IN (:listCategoriesIds)')
-                            ->andWhere('n.enable = :enable')
-                            ->setParameter('listCategoriesIds', $listCategoriesIds)
-                            ->setParameter('enable', 1)
-                            ->orderBy('n.createdAt', 'DESC')
-                            ->getQuery()->getResult();
                     }
 
                     $blockOnHomepage = (object) array('category' => $category, 'listSubTabs' => $listSubTabs, 'posts' => $posts, 'description' => $listCategoriesOnHomepage[$i]["description"]);
@@ -68,5 +77,26 @@ class HomepageController extends Controller
             'blocksOnHomepage' => $blocksOnHomepage,
             'showSlide' => true
         ]);
+    }
+
+    /**
+     * Render list testimonial
+     * @return Testimonial
+     */
+    public function listTestimonialAction($template = NULL)
+    {
+        $testimonial = $this->getDoctrine()
+            ->getRepository(Testimonial::class)
+            ->findAll();
+
+        if (!$template) {
+            return $this->render('testimonial/testimonial.html.twig', [
+                'testimonial' => $testimonial,
+            ]);
+        } else {
+            return $this->render($template, [
+                'testimonial' => $testimonial
+            ]);
+        }
     }
 }

@@ -44,7 +44,6 @@
     <div class="container wrapper-container wrapper-post-container">
         <div class="row post-container">
             <div class="col-12 col-md-12 col-lg-8 wrapper-post-container-left">
-                {# breadcrumbs #}
                 {{ include('news/components/breadcrumbs.html.twig') }}
 
                 <article id="post-{{ post.getId() }}" class="news hentry" itemscope itemtype="http://schema.org/Article">
@@ -73,28 +72,22 @@
                     <h1 class="entry-title block-title" itemprop="headline">{{ post.getTitle() }}</h1>
                     
                     <div class="news-container" itemprop="articleBody">
-                        {{ contentsLazy|replace({'10E3 Đường 30, P. Tân Phong, Quận 7, TP.HCM': 'A45 Đường Số 2, KDC Kim Sơn, P. Tân Phong, Quận 7, TP HCM'})|raw }}
+                        {{ contentsLazy|raw }}
                         {% if post.getAutoFulfillAddress() %}
                             {{ get_setting('addressInPost')|raw }}
                         {% endif %}
                     </div>
 
-                    {# List tags #}
                     {{ include('news/components/tags.html.twig') }}
 
-                    {# Rating and Share #}
                     <div class="rating-share-container">
-                        {{ include('news/rating/rating.html.twig') }}
                         {{ include('news/components/share.html.twig') }}
                     </div>
 
-                    {# Related news #}
                     {{ include('news/components/related.html.twig') }}
                     
-                    {# List comments #}
                     {{ include('news/comments/list.html.twig') }}
                     
-                    {# Render form comment #}
                     {{ include('news/comments/form.html.twig') }}
                 </article>
             </div>

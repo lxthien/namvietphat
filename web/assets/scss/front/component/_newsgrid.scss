@@ -70,7 +70,8 @@
                 position: relative;
 
                 @media only screen and (max-width: 980px) {
-                    height: 165px;
+                    height: 168px;
+                    width: 100%;
                 }
 
                 @media only screen and (max-width: 767.98px) {
@@ -112,6 +113,12 @@
                         color: $white;
                     }
 
+                    @media only screen and (max-width: 980px) {
+                        max-height: 92px;
+                        -webkit-line-clamp: 3;
+                        font-size: 17px;
+                    }
+
                     @media only screen and (max-width: 767.98px) {
                         max-height: 92px;
                         -webkit-line-clamp: 3;
@@ -132,6 +139,10 @@
                     -webkit-line-clamp: 3;
                     -webkit-box-orient: vertical;
                     font-family: $firaSansCondensedRegular;
+
+                    @media only screen and (max-width: 980px) {
+                        display: none;
+                    }
 
                     @media only screen and (max-width: 767.98px) {
                         display: none;

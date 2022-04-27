@@ -1,0 +1,23 @@
+<div class="list-group">
+    <h3 class="list-group-item list-group-item-action active text-uppercase">
+        {{ category.getName() }}
+    </h3>
+    <div class="row">
+        {% for row in posts %}
+            <div class="col-md-6 sidebar-item">
+                <a href="{{ path('news_show', {'slug': row.getUrl() }) }}" title="{{ row.getTitle() }}">
+                    <img
+                        class="lazyload"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                        data-src="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_188_120') }}"
+                        alt="{{ row.getTitle() }}"
+                        width="188"
+                        height="120" />
+                </a>
+                <a class="sidebar-item-url" href="{{ path('news_show', {'slug': row.getUrl() }) }}" title="{{ row.getTitle() }}">
+                    <span>{{ row.getTitle() }}</span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

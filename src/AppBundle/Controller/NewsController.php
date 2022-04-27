@@ -531,7 +531,7 @@ class NewsController extends Controller
      * Render list news by category
      * @return News
      */
-    public function listNewsByCategoryAction($categoryId, $description = null)
+    public function listNewsByCategoryAction($categoryId, $description = null, $template = null)
     {
         $category = $this->getDoctrine()
             ->getRepository(NewsCategory::class)
@@ -563,11 +563,19 @@ class NewsController extends Controller
             ->getQuery()
             ->getResult();
 
-        return $this->render('news/listByCategory.html.twig', [
-            'posts' => $posts,
-            'category' => $category,
-            'description' => $description
-        ]);
+        if ($template) {
+            return $this->render($template, [
+                'posts' => $posts,
+                'category' => $category,
+                'description' => $description
+            ]);
+        } else {
+            return $this->render('news/listByCategory.html.twig', [
+                'posts' => $posts,
+                'category' => $category,
+                'description' => $description
+            ]);
+        }
     }
 
     /**

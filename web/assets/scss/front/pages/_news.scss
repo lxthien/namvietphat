@@ -100,7 +100,8 @@
             h1 {
                 font-size: 35px;
                 line-height: 38px;
-                margin-bottom: 25px;
+                margin-bottom: 27px;
+                color: $primaryColor2;
             }
         
             .news-container {
@@ -520,42 +521,7 @@
 
     #form-comment {
         .form-group {
-            .form-control,
-            input {
-                border-width: 1px;
-                height: 38px;
-                padding: 5px 15px;
-                width: 350px;
-                box-shadow: 0;
-
-                @media only screen and (max-width: 767.98px) {
-                    width: 100%;
-                }
-
-                &.error {
-                    border: 1px solid $red;
-                    padding: 5px 15px;
-                }
-            }
-
-            textarea.form-control {
-                height: 150px;
-                width: 600px;
-
-                @media only screen and (max-width: 767.98px) {
-                    width: 100%;
-                }
-            }
-
-            label.error {
-                display: none !important;
-            }
-
-            .btn-primary {
-                background: $primaryColor;
-                border-width: 0px;
-                padding: 10px 20px;
-            }
+            
         }
     }
 }

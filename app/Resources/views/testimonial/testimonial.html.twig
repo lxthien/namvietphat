@@ -1,0 +1,42 @@
+<section class="section dark testimonial">
+    <div class="bg section-bg fill bg-fill bg-loaded"></div>
+
+    <div class="section-content relative container">
+        <div class="row">
+            <div class="col col-12 col-md-12">
+                <div class="col-inner">
+                    <p class="title-section-2 text-white text-center">Ý kiến khách hàng</p>
+                    <p class="title-section-3 text-center">Đôi lời cảm nhận của Quý khách hàng đã tin tưởng đến công ty xây dựng Nam Việt Phát Corp</p>
+
+                    <div class="slider-wrapper">
+                        <div id="image-gallery-3">
+                            {% for row in testimonial %}
+                                <div class="icon-box testimonial-box">
+                                    <div class="icon-box-img testimonial-image circle row">
+                                        <div class="testimonial-meta col-xs-6 col-md-6">
+                                            {{ row.getName() }}
+                                        </div>
+                                        <div class="testimonial-img col-xs-6 col-md-6">
+                                            <img
+                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                alt="{{ row.getName() }}"
+                                                srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_50_50') }}"
+                                                width="50"
+                                                height="50"
+                                                />
+                                        </div>
+                                    </div>
+                                    <div class="icon-box-text">
+                                        <div class="testimonial-text">
+                                            <p>“{{ row.getComments() }}”</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
