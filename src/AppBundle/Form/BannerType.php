@@ -29,6 +29,7 @@ class BannerType extends AbstractType
                 'label' => 'label.url',
             ])
             ->add('imageFile', VichFileType::class, [
+                'required' => false,
                 'allow_delete' => true,
             ])
         ;

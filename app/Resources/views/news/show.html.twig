@@ -10,7 +10,6 @@
 {% block keyword %}{{ post.getPageKeyword() }}{% endblock %}
 
 {% block structuredOpenGraph %}
-    <link rel="amphtml" href="{{ url('amp_show', { slug: post.getUrl() }) }}">
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ post.getPageTitle() is not null ? post.getPageTitle() : post.getTitle() }}" />
     <meta property="og:description" content="{{ post.getPageDescription() is not null ? post.getPageDescription() : post.getDescription() }}" />
@@ -23,55 +22,16 @@
     <meta property="twitter:image" content="{{ vich_uploader_asset(post, 'imageFile') ? app.request.getUriForPath(vich_uploader_asset(post, 'imageFile')) : absolute_url(asset('assets/images/no-image.png')) }}" />
 {% endblock %}
 
-{% block structuredReview %}
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org/",
-        "@type": "CreativeWorkSeries",
-        "name": "{{ post.getTitle() }}",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "{{ rating }}",
-            "ratingCount": "{{ ratingCount }}",
-            "bestRating" : "5",
-            "worstRating": "1"
-        }
-    }
-    </script>
-{% endblock %}
-
 {% block body %}
     <div class="container wrapper-container wrapper-post-container">
         <div class="row post-container">
             <div class="col-12 col-md-12 col-lg-8 wrapper-post-container-left">
                 {{ include('news/components/breadcrumbs.html.twig') }}
 
-                <article id="post-{{ post.getId() }}" class="news hentry" itemscope itemtype="http://schema.org/Article">
-                    {# Begin google snippet #}
-                    <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="{{ absolute_url(path('news_show', {'slug': post.getUrl() })) }}"/>
-                    <div itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <meta itemprop="name" content="{{ get_setting('siteName') }}"/>
-                    </div>
-                    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="{{ (vich_uploader_asset(post, 'imageFile') ? app.request.getUriForPath(vich_uploader_asset(post, 'imageFile')) : absolute_url(asset('assets/images/no-image.png'))) | imagine_filter('news_382_285') }}">
-                        <meta itemprop="width" content="382">
-                        <meta itemprop="height" content="285">
-                    </div>
-                    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-                        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-                            <meta itemprop="url" content="{{ absolute_url(asset('assets/images/SuaNhaMinhDuy.png')) }}">
-                            <meta itemprop="width" content="376">
-                            <meta itemprop="height" content="218">
-                        </div>
-                        <meta itemprop="name" content="{{ get_setting('siteName') }}">
-                    </div>
-                    <meta itemprop="datePublished" content="{{ post.getCreatedAt()|date("Y-m-d h:m:s") }}"/>
-                    <meta itemprop="dateModified" content="{{ post.getUpdatedAt()|date("Y-m-d h:m:s") }}"/>
-                    {# End google snippet #}
-
-                    <h1 class="entry-title block-title" itemprop="headline">{{ post.getTitle() }}</h1>
+                <article id="post-{{ post.getId() }}" class="news hentry">
+                    <h1 class="entry-title block-title">{{ post.getTitle() }}</h1>
                     
-                    <div class="news-container" itemprop="articleBody">
+                    <div class="news-container"
                         {{ contentsLazy|raw }}
                         {% if post.getAutoFulfillAddress() %}
                             {{ get_setting('addressInPost')|raw }}
@@ -94,18 +54,6 @@
 
             {# Side bar #}
             {{ include('layout/sidebar.html.twig') }}
-
-            {# <div class="col-12 col-md-12">
-                {{ render(controller(
-                    'AppBundle:News:listNewsByCategory', { 'categoryId':11, 'description':'Tổng hợp các dự án xây nhà phố, biệt thự, nhà tiền chế, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-                )) }}
-                {{ render(controller(
-                    'AppBundle:News:listNewsByCategory', { 'categoryId':10, 'description':'Tổng hợp các dự án sửa chữa nhà, cải tạo nhà cũ, nâng tầng, nâng nền, căn hộ chung cư, nhà cấp 4, ... nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-                )) }}
-                {{ render(controller(
-                    'AppBundle:News:listNewsByCategory', { 'categoryId':12, 'description':'Tổng hợp các dự án xây dựng, thiết kế, trang trí quán cafe, trà sữa nổi bật do Xây Dựng Minh Duy đã và đang thực hiện' }
-                )) }}
-            </div> #}
         </div>
     </div>
 {% endblock %}

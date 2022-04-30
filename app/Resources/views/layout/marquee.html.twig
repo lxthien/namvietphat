@@ -1,8 +1,16 @@
 <div class="marquee">
     <div class="container">
         <div class="row marquee">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <marquee scrollamount="6">{{ get_setting('marqueeHomepage')|raw }}</marquee>
+            </div>
+            <div class="col-md-3">
+                <form action="{{ path('news_search') }}" method="get" id="form-search">
+                    <div class="form-group">
+                        <input name="q" type="text" class="form-control search-field" placeholder="{{ 'search'|trans }}" autocomplete="off">
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -2,7 +2,8 @@
     label.control-label {
         margin-bottom: 5px;
         font-weight: normal;
-        font-size: 15px;
+        font-size: 16px;
+        font-family: $firaSansCondensedBold;
 
         &.required {
             &::after {
@@ -22,9 +23,17 @@
         width: 350px;
         box-shadow: none;
 
+        &.error {
+            border: 1px solid $red;
+        }
+
         @media only screen and (max-width: 767.98px) {
             width: 100%;
         }
+    }
+
+    label.error {
+        display: none !important;
     }
 
     textarea.form-control {
@@ -44,5 +53,49 @@
         border-radius: 0px;
         font-size: 16px;
         font-family: $firaSansCondensedBold
+    }
+}
+
+.alert {
+    padding: 0;
+}
+
+.alert-success {
+    color: $primaryColor2;
+}
+
+.alert-success {
+    color: $red;
+}
+
+#form-search {
+    .form-group {
+        margin: 0;
+        display: flex;
+
+        .search-field {
+            width: 100%;
+            margin: 5px 0;
+            height: 32px;
+            padding-right: 30px;
+            border-right: none;
+        }
+
+        button[type="submit"] {
+            margin-top: 5px;
+            border: 1px solid #cccccc;
+            text-indent: -999px;
+            overflow: hidden;
+            width: 36px;
+            height: 32px;
+            padding: 0;
+            background: $white url("../../../images/icon-search.png") no-repeat center;
+            background-size: 16px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 }

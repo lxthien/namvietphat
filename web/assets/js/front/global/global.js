@@ -2,6 +2,7 @@
 
 require('bxslider/dist/jquery.bxslider');
 require('@fancyapps/fancybox');
+require('jquery-validation');
 require('../../../libs/starrating/js/rating.js');
 require('../../../libs/lightslider/js/lightslider.js');
 require('jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.js');
@@ -55,24 +56,6 @@ function initProjectHotSlider() {
     });
 }
 
-function initNewsSlider() {
-    $('.post-sidebar-bxslider').bxSlider({
-        mode: 'vertical',
-        auto: true,
-        speed: 300,
-        autoControls: false,
-        stopAutoOnClick: true,
-        pager: false,
-        controls: false,
-        minSlides: 10,
-        maxSlides: 10,
-        moveSlides: 1,
-        slideWidth: 375,
-        touchEnabled: false,
-        autoHover: true
-    });
-}
-
 function initFixedMenu() {
     $(window).scroll(function() {
         var $nav = $("#nav");
@@ -89,102 +72,57 @@ function initFixedMenu() {
     });
 }
 
-function initFixedSidebar() {
-    $(window).scroll(function() {
-        var $sidebar = $("#sidebar .sidebar"),
-            $pageDetail = $('.wrapper-post-container'),
-            $pageDetailLeft = $('.wrapper-post-container-left'),
-            scrollTop = $(this).scrollTop(),
-            pageDetailHeight =  $pageDetail.outerHeight(),
-            pageDetailLeftHeight =  $pageDetailLeft.outerHeight(),
-            sidebarHeight = $sidebar.height(),
-            parentSidebarWidth = $sidebar.parent('.col-md-12').width(),
-            positionFixedMax = pageDetailHeight - sidebarHeight,
-            positionFixed = scrollTop < 65 ? 65 : positionFixedMax > scrollTop ? 65 : positionFixedMax - scrollTop ;
-        
-        if (pageDetailLeftHeight > sidebarHeight) {
-            if (scrollTop > 220) {
-                $sidebar.css({
-                    'top': positionFixed,
-                    'position': 'fixed',
-                    'width': parentSidebarWidth
-                });
-            } else {
-                $sidebar.removeAttr("style");
-            }
-        }
-    });
-}
+function initFancybox() {
+    var $nhandongia = $('.nhan-bao-gia');
+    var yetVisited = sessionStorage.getItem("visited");
 
-function initCostConstruction() {
-    var $formType = $('.costs #form_type');
-    var $formFloor = $('.costs #form_floor');
+    if (!yetVisited) {
+        setTimeout(function() {
+            sessionStorage.setItem("visited", true);
 
-    if ($formType.val() == 3) {
-        $formFloor.val(1);
-        $formFloor.attr('disabled', 'disabled');
+            $.fancybox.open({
+                src: '#nhanbaogia',
+                touch : false
+            });
+
+            return false;
+        }, 8000);
     }
 
-    $formType.change(function(e) {
-        if ($(this).val() == 3) {
-            $formFloor.val(1);
-            $formFloor.attr('disabled', 'disabled');
-        } else {
-            $formFloor.removeAttr('disabled');
-        }
-    })
+    $nhandongia.click(function() {
+        $.fancybox.open({
+            src: '#nhanbaogia',
+            touch : false
+        });
+    });
+
+    return false;
 }
 
-function initFancybox() {
-    var $rating = $('.rating-container .rating');
-    var $ratingMessage = $('p.rating-message');
-    var $star = $('#form-rating-review .rating-well .star');
-    var $formRating = $('#form-rating-review');
+function intHandleFormContact() {
+    var $formComment = $('#nhanbaogia #form-contact');
 
-    $rating.click(function() {
-        $formRating.show();
-        $ratingMessage.html('');
-        
-        $.fancybox.open({
-            src: '#form-rating-container',
-            touch : false
-        });
-
-        return false;
-    });
-
-    $('a#rating').click(function(e) {
-        e.preventDefault();
-
-        $formRating.show();
-        $ratingMessage.html('');
-        
-        $.fancybox.open({
-            src: '#form-rating-container',
-            touch : false
-        });
-
-        return false;
-    });
-
-    $star.on('click', function(e) {
-        var rating = $(this).data('value');
-        var newsId = $formRating.data('newsId');
-
-        $.ajax({
-            type: "POST",
-            url: $formRating.attr('action'),
-            data: 'rating=' + rating + '&newsId=' + newsId,
-            success: function(data) {
-                var response = JSON.parse(data);
-                
-                if (response.status === 'success') {
-                    $formRating.hide();
-                    $ratingMessage.html(response.message);
+    $formComment.on('click', '#form_send', function(e) {
+        if ($formComment.valid()) {
+            $.ajax({
+                type: "POST",
+                url: $formComment.attr('action'),
+                data: $formComment.serialize(),
+                success: function(data) {
+                    var response = JSON.parse(data);
+                    if (response.status === 'success') {
+                        $('#contact-form-message').html(response.message).show();
+                        $('#nhanbaogia form').hide();
+                        
+                        // Clear form comment
+                        $formComment[0].reset();
+                    } else {
+                        $('#contact-form-message').html(response.message);
+                    }
                 }
-            }
-        });
-    });
+            });
+        }
+    })
 }
 
 function initFlickity() {
@@ -219,7 +157,8 @@ exports.init = function () {
     initProtectedContent();
     initGoToTop();
     initFixedMenu();
-    initCostConstruction();
+    initFancybox();
+    intHandleFormContact();
     initFlickity();
 
     $('.nav-tabs').scrollingTabs();

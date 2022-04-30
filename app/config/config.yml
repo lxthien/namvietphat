@@ -176,10 +176,6 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [406, 280], mode: outbound }
-        news_290_220:
-            quality: 100
-            filters:
-                thumbnail: { size: [290, 220], mode: outbound }
         news_382_298:
             quality: 100
             filters:
@@ -188,10 +184,18 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [224, 169], mode: outbound }
+        news_290_220:
+            quality: 100
+            filters:
+                thumbnail: { size: [290, 220], mode: outbound }
         news_290_315:
             quality: 100
             filters:
                 thumbnail: { size: [290, 315], mode: outbound }
+        news_290_250:
+            quality: 100
+            filters:
+                thumbnail: { size: [290, 250], mode: outbound }
         banner_768_400:
             quality: 100
             filters:

@@ -16,7 +16,10 @@
         <title>{% block title %}{{ get_setting('pageTitle') }}{% endblock %}</title>
         <meta name="description" content="{% block description %}{{ get_setting('pageDescription') }}{% endblock %}">
         <meta name="keywords" content="{% block keyword %}{{ get_setting('pageKeyword') }}{% endblock %}">
+
+        {% block robots %}
         <meta name="robots" content="index, follow" />
+        {% endblock %}
         <meta name="revisit-after" content="1 days">
         <meta http-equiv="content-language" content="vi">
 
@@ -54,9 +57,6 @@
         {% endblock %}
 
         {% block structuredPerson %}
-        {% endblock %}
-
-        {% block structuredReview %}
         {% endblock %}
 
         {{ get_setting('googleAnalytic')|raw }}

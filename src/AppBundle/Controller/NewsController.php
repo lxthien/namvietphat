@@ -497,11 +497,16 @@ class NewsController extends Controller
     {
         $posts = $this->getDoctrine()
             ->getRepository(News::class)
-            ->findBy(
-                array('postType' => 'post', 'enable' => 1),
-                array('createdAt' => 'DESC'),
-                10
-            );
+            ->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->where('c.id NOT IN (:category)')
+            ->andWhere('p.enable = :enable')
+            ->setParameter('category', [4])
+            ->setParameter('enable', 1)
+            ->orderBy('p.createdAt', 'DESC')
+            ->groupBy('p.id')
+            ->setMaxResults(10)
+            ->getQuery()->getResult();
 
         return $this->render('news/recent.html.twig', [
             'posts' => $posts,
@@ -516,11 +521,16 @@ class NewsController extends Controller
     {
         $posts = $this->getDoctrine()
             ->getRepository(News::class)
-            ->findBy(
-                array('postType' => 'post', 'enable' => 1),
-                array('viewCounts' => 'DESC'),
-                15
-            );
+            ->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->where('c.id NOT IN (:category)')
+            ->andWhere('p.enable = :enable')
+            ->setParameter('category', [4])
+            ->setParameter('enable', 1)
+            ->orderBy('p.viewCounts', 'DESC')
+            ->groupBy('p.id')
+            ->setMaxResults(10)
+            ->getQuery()->getResult();
 
         return $this->render('news/hot.html.twig', [
             'posts' => $posts,
@@ -540,11 +550,11 @@ class NewsController extends Controller
         $listCategoriesIds = array($category->getId());
 
         $allSubCategories = $this->getDoctrine()
-                            ->getRepository(NewsCategory::class)
-                            ->createQueryBuilder('c')
-                            ->where('c.parentcat = (:parentcat)')
-                            ->setParameter('parentcat', $category->getId())
-                            ->getQuery()->getResult();
+                                ->getRepository(NewsCategory::class)
+                                ->createQueryBuilder('c')
+                                ->where('c.parentcat = (:parentcat)')
+                                ->setParameter('parentcat', $category->getId())
+                                ->getQuery()->getResult();
 
         foreach ($allSubCategories as $value) {
             $listCategoriesIds[] = $value->getId();
@@ -559,7 +569,7 @@ class NewsController extends Controller
             ->setParameter('listCategoriesIds', $listCategoriesIds)
             ->setParameter('enable', 1)
             ->setMaxResults( 10 )
-            ->orderBy('n.viewCounts', 'DESC')
+            ->orderBy('n.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -683,8 +693,8 @@ class NewsController extends Controller
                 'label' => 'label.content',
                 'attr' => array('rows' => '7')
             ))
-            ->add('author', TextType::class, array('label' => 'label.author'))
-            ->add('email', EmailType::class, array('label' => 'label.author_email'))
+            ->add('author', TextType::class, array('label' => 'Tên'))
+            ->add('phone', TextType::class, array('label' => 'Số điện thoại'))
             ->add('ip', HiddenType::class)
             ->add('news_id', HiddenType::class)
             ->add('comment_id', HiddenType::class)

@@ -40,6 +40,10 @@ class NewsCategoryType extends AbstractType
                 'required' => false,
                 'label' => 'label.enable',
             ])
+            ->add('template', TextType::class, [
+                'required' => false,
+                'label' => 'Template',
+            ])
             ->add('pageTitle', TextType::class, [
                 'required' => false,
                 'label' => 'label.pageTitle',

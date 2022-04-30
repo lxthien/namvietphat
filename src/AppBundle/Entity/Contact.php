@@ -6,8 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
-
 /**
  * Contact
  *
@@ -75,11 +73,6 @@ class Contact
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-
-    /**
-     * @Recaptcha\IsTrue
-     */
-    public $recaptcha;
 
     /**
      * Get id

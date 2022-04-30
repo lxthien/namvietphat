@@ -37,7 +37,7 @@ dmishh_settings:
         numberRecordOnPage:
             type: Symfony\Component\Form\Extension\Core\Type\NumberType
             options:
-                required: true
+                required: false
         companyAddress:
             type: Symfony\Component\Form\Extension\Core\Type\TextType
             options:

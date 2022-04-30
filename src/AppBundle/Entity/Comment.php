@@ -66,9 +66,9 @@ class Comment
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="email", type="text")
+     * @ORM\Column(name="text", type="text")
      */
-    private $email;
+    private $phone;
 
     /**
      * @var string
@@ -222,26 +222,26 @@ class Comment
     }
 
     /**
-     * Set email
+     * Set phone
      *
-     * @param string $email
+     * @param string $phone
      * @return Comment
      */
-    public function setEmail($email)
+    public function setPhone($phone)
     {
-        $this->email = $email;
+        $this->phone = $phone;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get phone
      *
      * @return string
      */
-    public function getEmail()
+    public function getPhone()
     {
-        return $this->email;
+        return $this->phone;
     }
 
     /**

@@ -525,7 +525,7 @@
             </trans-unit>
             <trans-unit id="post.archives.title">
                 <source>post.archives.title</source>
-                <target>%title% - Trang %currentPage% của %totalPage% | Xây Dựng Minh Duy</target>
+                <target>%title% - Trang %currentPage% của %totalPage% | Nam Việt Phát</target>
             </trans-unit>
 
             <trans-unit id="post.do_not_have_item_on_this_page">

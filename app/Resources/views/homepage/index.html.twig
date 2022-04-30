@@ -10,11 +10,11 @@
     {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "url": "https://xaydungminhduy.com/",
-        "logo": "https://xaydungminhduy.com/assets/images/logo.png",
+        "url": "https://namvietphatcorp.com/",
+        "logo": "https://namvietphatcorp.com/assets/images/logo.png",
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+84982969379",
+            "telephone": "+84979274245",
             "contactType": "customer service"
         }
     }
@@ -26,10 +26,10 @@
     {
         "@context": "http://schema.org",
         "@type": "WebSite",
-        "url": "https://xaydungminhduy.com/",
+        "url": "https://namvietphatcorp.com/",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://xaydungminhduy.com/search?q={search_term_string}",
+            "target": "https://namvietphatcorp.com/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }
@@ -48,28 +48,28 @@
                         <div class="content_dv_baogia">
                             <ul>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ path('news_category', {'level1': 'thiet-ke-nha' }) }}">
                                         <h2>Thiết kế nhà phố</h2>
                                         <span class="img_h"><img src="{{ asset('assets/images/icon_thietkenha.png') }}" alt="Thiết kế nhà phố"></span>
                                         <span class="img_hover"><img src="{{ asset('assets/images/icon_thietkenha_h.png') }}" alt="Thiết kế nhà phố"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ path('news_category', {'level1': 'xay-dung' }) }}">
                                         <h2>Xây dựng nhà</h2>
                                         <span class="img_h"><img src="{{ asset('assets/images/icon_xaybietthu.png') }}" alt="Xây nhà biệt thự"></span>
                                         <span class="img_hover"><img src="{{ asset('assets/images/icon_xaybietthu_h.png') }}" alt="Xây nhà biệt thự"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ path('news_category', {'level1': 'sua-chua-nha' }) }}">
                                         <h2>Sửa chữa nhà</h2>
                                         <span class="img_h"><img src="{{ asset('assets/images/icon_suanha.png') }}" alt="Sửa chữa nhà"></span>
                                         <span class="img_hover"><img src="{{ asset('assets/images/icon_suanha_h.png') }}" alt="Sửa chữa nhà"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{ path('news_show', {'slug': 'dich-vu-xin-giay-phep-xay-dung' }) }}">
                                         <h2>Xin GPXD</h2>
                                         <span class="img_h"><img src="{{ asset('assets/images/icon_xaynha.png') }}" alt="Dự án xây nhà"></span>
                                         <span class="img_hover"><img src="{{ asset('assets/images/icon_xaynha_h.png') }}" alt="Dự án xây nhà"></span>
@@ -93,25 +93,25 @@
                                 <div class="content_img_banggia">
                                     <ul class="list_baogia">
                                         <li>	
-                                            <a href="">
+                                            <a href="{{ path('news_show', {'slug': 'don-gia-xay-nha-tron-goi' }) }}">
                                                 <span class="baogia_img"><img src="{{ asset('assets/images/bg_trongoi.png') }}" alt="Đơn giá xây nhà trọn gói năm 2022"></span>
                                                 <span class="text-bg">ĐƠN GIÁ<br>xây nhà trọn gói</span>
                                             </a>
                                         </li>
                                         <li>	
-                                            <a href="">
+                                            <a href="{{ path('news_show', {'slug': 'don-gia-xay-dung-nha-phan-tho' }) }}">
                                                 <span class="baogia_img"><img src="{{ asset('assets/images/bg_xaytho.png') }}" alt="Đơn giá xây nhà phần thô TPHCM 2022"></span>
                                                 <span class="text-bg">ĐƠN GIÁ<br>xây nhà phần thô</span>
                                             </a>
                                         </li>
                                         <li>	
-                                            <a href="">
+                                            <a href="{{ path('news_show', {'slug': 'don-gia-sua-chua-nha-tron-goi' }) }}">
                                                 <span class="baogia_img"><img src="{{ asset('assets/images/bg_suanha.png') }}" alt="Đơn giá sửa chữa nhà trọn gói năm 2022"></span>
                                                 <span class="text-bg">ĐƠN GIÁ <br>sửa chữa nhà</span>
                                             </a>
                                         </li>
                                         <li>	
-                                            <a href="">
+                                            <a href="{{ path('news_show', {'slug': 'don-gia-thiet-ke-nha-pho' }) }}">
                                                 <span class="baogia_img"><img src="{{ asset('assets/images/bg_thietke.png') }}" alt="Đơn giá thiết kế xây dựng nhà phố, biệt thự năm 2022"></span>
                                                 <span class="text-bg">ĐƠN GIÁ<br>thiết kế nhà</span>
                                             </a>
@@ -143,7 +143,7 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs nav-tabs-sub-cat" role="tablist">
                                         {% for listSubTab in blockOnHomepage.listSubTabs %}
-                                            <li role="presentation" {{ loop.index == 1 ? 'class="active"' : '' }}><a href="#tab_{{ listSubTab.subCategoryId }}" role="tab" data-toggle="tab">{{ listSubTab.subCategoryName }}</a></li>
+                                            <li role="presentation" {{ loop.index == 1 ? 'class="active"' : '' }}><a href="#tab_{{ listSubTab.subCategory.getId() }}" role="tab" data-toggle="tab">{{ listSubTab.subCategory.getName() }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 {% endif %}
@@ -153,16 +153,16 @@
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     {% for listSubTab in blockOnHomepage.listSubTabs %}
-                                        <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? 'active' : '' }}" id="tab_{{ listSubTab.subCategoryId }}">
+                                        <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? 'active' : '' }}" id="tab_{{ listSubTab.subCategory.getId() }}">
                                             <div class="col-md-12 list-news-items">
                                                 <div class="row">
                                                     {% for row in listSubTab.posts %}
-                                                        {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                                        {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                                        {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                                        {{ include('news/components/itemsGridHomepage.html.twig') }}
+                                                        {% include 'news/components/itemsGridHomepage.html.twig' with {'category': listSubTab.subCategory} %}
                                                     {% endfor %}
                                                 </div>
+                                            </div>
+                                            <div class="col-md-12 view-all-category text-center">
+                                                <a href="{{ path('list_category', {'level1': blockOnHomepage.category.getUrl(), 'level2': listSubTab.subCategory.getUrl() }) }}">Xem tất cả bài viết</a>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -171,11 +171,11 @@
                                 <div class="col-md-12 list-news-items">
                                     <div class="row">
                                         {% for row in blockOnHomepage.posts %}
-                                            {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                            {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                            {{ include('news/components/itemsGridHomepage.html.twig') }}
-                                            {{ include('news/components/itemsGridHomepage.html.twig') }}
+                                            {% include 'news/components/itemsGridHomepage.html.twig' with {'category': blockOnHomepage.category} %}
                                         {% endfor %}
+                                    </div>
+                                    <div class="col-md-12 view-all-category text-center">
+                                        <a href="{{ path('news_category', {'level1': blockOnHomepage.category.getUrl() }) }}">Xem tất cả bài viết</a>
                                     </div>
                                 </div>
                             {% endif %}

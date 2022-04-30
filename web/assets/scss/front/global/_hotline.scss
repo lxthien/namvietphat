@@ -2,7 +2,7 @@
     cursor: pointer;
     position: fixed;
     bottom: 30px;
-    right: 25px;
+    right: 10px;
     width: 35px;
     height: 35px;
     background-color: $primaryColor2;
@@ -24,63 +24,10 @@
     }
 }
 
-.floating {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    background-color: $primaryColor2;
-
-    .inside {
-        .call-now,
-        .chat-us {
-            float: left;
-            border-right: 1px dotted $mercury;
-            vertical-align: middle;
-            color: $white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            font-size: 16px;
-
-            div {
-                text-align: center;
-                line-height: 24px;
-                position: relative;
-
-                i {
-                    position: absolute;
-                    font-size: 20px;
-                    top: 12px;
-                    left: 15px;
-                }
-
-                span, strong {
-                    display: block;
-                }
-            }
-        }
-
-        .chat-us {
-            border-right: none;
-        }
-    }
-}
-
-#fb-root > div.fb_dialog.fb_dialog_advanced.fb_customer_chat_bubble_animated_no_badge {
-    bottom: 90px !important;
-}
-
-#fb-root > div.fb_dialog.fb_dialog_mobile.fb_customer_chat_bubble_animated_no_badge {
-    bottom: 120px!important;
-    right: 10px !important;
-}
-
 .hotline {
     position: fixed;
     bottom: 80px;
-    right: 25px;
+    right: 10px;
     text-align: center;
     background-color: $white;
     color: $white;
@@ -101,13 +48,13 @@
         display: inline-block;
         font-size: 21px;
         font-weight: 700;
-        color: $primaryColor;
+        color: $primaryColor2;
         background: url(../../../images/icon-phone.png) no-repeat 17px center;
         background-size: 25px;
         position: relative;
         border: 1px solid $primaryColor2;
         border-radius: 40px;
-        padding: 6px 19px 6px 50px;
+        padding: 3px 19px 3px 50px;
         -webkit-background-clip: text;
         -webkit-animation: color-change 1s infinite;
         -moz-animation: color-change 1s infinite;
@@ -118,7 +65,7 @@
         .phonering-alo-ph-img-circle {
             width: 25px;
             height: 25px;
-            top: 11px;
+            top: 9px;
             left: 16px;
             position: absolute;
             background: url(../../../images/icon-phone.png) no-repeat 0px center;
@@ -197,7 +144,7 @@
 }
 
 .giuseart-pc-contact-bar {
-    left: 10px;
+    right: 10px;
     bottom: 45%;
     position: fixed;
     z-index: 100;
@@ -205,7 +152,6 @@
     padding-left: 0;
 
     @media only screen and (max-width: 767.98px) {
-        left: unset;
         right: 10px;
     }
 
@@ -231,9 +177,23 @@
     }
 
     li.zalo {
+        margin-bottom: 15px;
         background: url(../../../images/zl.png);
         background-position: 7px 5px;
         background-size: 38px;
         background-repeat: no-repeat;
+    }
+
+    li.nhan-bao-gia {
+        background: url(../../../images/icon_dk_w.png);
+        background-position: 7px 5px;
+        background-size: 27px;
+        background-repeat: no-repeat;
+        background-color: $primaryColor2;
+        border-radius: 5px;
+        width: 38px;
+        height: 38px;
+        float: right;
+        margin-right: 5px;
     }
 }

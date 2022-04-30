@@ -50,50 +50,6 @@
             }
         }
     }
-
-    .carousel-control {
-        &.left {
-            .glyphicon {
-                width: 50px;
-                height: 130px;
-                top: 40%;
-                background: url("../../../images/arrow-left.png") no-repeat;
-
-                @media only screen and (max-width : 768px) {
-                    width: 45px;
-                    height: 95px;
-                    top: 30%;
-                    background-size: 70%;
-                    left: 40%;
-                }
-
-                &::before {
-                    content: "";
-                }
-            }
-        }
-
-        &.right {
-            .glyphicon {
-                width: 50px;
-                height: 130px;
-                top: 40%;
-                background: url("../../../images/arrow-right.png") no-repeat;
-
-                @media only screen and (max-width : 768px) {
-                    width: 45px;
-                    height: 95px;
-                    top: 30%;
-                    background-size: 70%;
-                    right: 20%;;
-                }
-
-                &::before {
-                    content: "";
-                }
-            }
-        }
-    }
 }
 
 .marquee {
@@ -102,6 +58,11 @@
     text-shadow: 0.2px 0.2px 0.2px $white;
     font-family: $firaSansCondensedRegular;
     height: 42px;
+
+    @media only screen and (max-width: 767.98px) {
+        height: auto;
+        padding-bottom: 5px;
+    }
 
     marquee {
         line-height: 42px;
@@ -320,6 +281,10 @@
     position: relative;
     padding: 0 10px;
 
+    @media only screen and (max-width: 767.98px) {
+        margin: 0 auto 25px;
+    }
+
     .scrtabs-tab-scroll-arrow {
         cursor: pointer;
         height: 18px;
@@ -392,9 +357,18 @@
     text-align: center;
     border-bottom: none;
 
+    @media only screen and (max-width: 767.98px) {
+        display: flex;
+    }
+
     li {
         float: none;
         display: inline-block;
+
+        @media only screen and (max-width: 767.98px) {
+            display: inline-flex;
+            margin-right: 5px;
+        }
 
         a {
             border: 1px solid $primaryColor2;
@@ -421,6 +395,19 @@
                 color: $white;
             }
         }
+    }
+}
+
+.view-all-category {
+    margin: 15px 0 30px;
+
+    a {
+        padding: 12px 25px;
+        background: $primaryColor2;
+        border-radius: 5px;
+        color: $white;
+        font-family: $firaSansCondensedRegular;
+        font-size: 17px;
     }
 }
 
