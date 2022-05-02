@@ -6,6 +6,10 @@
         color: $primaryColor2;
         line-height: 45px;
 
+        @media only screen and (max-width: 767.98px) {
+            margin: 35px 0 5px;
+        }
+
         img {
             height: 25px;
             vertical-align: baseline;

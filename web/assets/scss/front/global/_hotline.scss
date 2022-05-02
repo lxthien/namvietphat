@@ -9,7 +9,7 @@
     z-index: 100;
 
     @media only screen and (max-width: 767.98px) {
-        bottom: 75px;
+        bottom: 48px;
         right: 12px;
     }
 
@@ -32,7 +32,7 @@
     background-color: $white;
     color: $white;
     z-index: 100;
-    font-family: $robotoCondesed;
+    font-family: $firaSansCondensedBold;
     font-size: 20px;
     text-transform: uppercase;
     padding: 0px;
@@ -41,7 +41,7 @@
 
     @media only screen and (max-width: 767.98px) {
         right: 10px;
-        bottom: 118px;
+        bottom: 100px;
     }
 
     .inner > a {

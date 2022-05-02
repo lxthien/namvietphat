@@ -4,6 +4,10 @@ footer {
     background-color: #115b87 !important;
     color: $white;
 
+    @media only screen and (max-width: 990px) {
+        padding-top: 40px;
+    }
+
     &:after {
         content : "";
         background-image: url("../../assets/images/background-footer.jpg");
@@ -31,8 +35,18 @@ footer {
     }
 
     .footer-top {
+        .col-sm-6 {
+            @media only screen and (max-width: 990px) {
+                margin-bottom: 30px;
+            }
+        }
+
         .footer-top-col-1 {
             @media only screen and (max-width: 767.98px) {
+                text-align: center;
+            }
+
+            @media only screen and (max-width: 990px) {
                 text-align: center;
             }
 
@@ -42,7 +56,12 @@ footer {
 
                 @media only screen and (max-width: 767.98px) {
                     margin: 5% 0;
-                    width: 68%;
+                    width: 60%;
+                }
+
+                @media only screen and (max-width: 990px) {
+                    margin-top: 0;
+                    width: 79%;
                 }
             }
         }

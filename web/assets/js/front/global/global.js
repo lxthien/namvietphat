@@ -3,7 +3,6 @@
 require('bxslider/dist/jquery.bxslider');
 require('@fancyapps/fancybox');
 require('jquery-validation');
-require('../../../libs/starrating/js/rating.js');
 require('../../../libs/lightslider/js/lightslider.js');
 require('jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.js');
 
@@ -74,16 +73,15 @@ function initFixedMenu() {
 
 function initFancybox() {
     var $nhandongia = $('.nhan-bao-gia');
-    var yetVisited = sessionStorage.getItem("visited");
 
-    if (!yetVisited) {
+    if (localStorage.getItem('visited') != 'shown') {
         setTimeout(function() {
-            sessionStorage.setItem("visited", true);
-
             $.fancybox.open({
                 src: '#nhanbaogia',
                 touch : false
             });
+
+            localStorage.setItem('visited','shown')
 
             return false;
         }, 8000);
