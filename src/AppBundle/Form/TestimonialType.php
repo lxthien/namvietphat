@@ -26,6 +26,7 @@ class TestimonialType extends AbstractType
                 'label' => 'label.name',
             ])
             ->add('imageFile', VichFileType::class, [
+                'required' => false,
                 'allow_delete' => true,
             ])
         ;

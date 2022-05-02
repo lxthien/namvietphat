@@ -75,6 +75,7 @@ function initFancybox() {
     var $nhandongia = $('.nhan-bao-gia');
 
     if (localStorage.getItem('visited') != 'shown') {
+        console.log(1);
         setTimeout(function() {
             $.fancybox.open({
                 src: '#nhanbaogia',
@@ -85,16 +86,20 @@ function initFancybox() {
 
             return false;
         }, 8000);
+    } else {
+        return false;
     }
 
-    $nhandongia.click(function() {
+    $nhandongia.click(function(e) {
+        e.preventDefault();
+
         $.fancybox.open({
             src: '#nhanbaogia',
             touch : false
         });
-    });
 
-    return false;
+        return false;
+    });
 }
 
 function intHandleFormContact() {

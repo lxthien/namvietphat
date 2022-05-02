@@ -235,7 +235,6 @@
             margin-right: 15px;
             vertical-align: middle;
             font-weight: bold;
-            font-style: italic;
             margin-top: 3px;
             text-decoration: underline;
         }
@@ -244,8 +243,9 @@
             margin: 0 5px 0px 0;
         }
 
-        .addthis_inline_share_toolbox_of26_7oy0 {
+        .addthis_inline_share_toolbox {
             display: inline-block;
+            margin-top: 5px;
         }
     }
 }
