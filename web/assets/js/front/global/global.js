@@ -4,6 +4,7 @@ require('bxslider/dist/jquery.bxslider');
 require('@fancyapps/fancybox');
 require('jquery-validation');
 require('../../../libs/lightslider/js/lightslider.js');
+require('../../../libs/jquery/jquery.cookie.js');
 require('jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.js');
 
 function initSearchBox() {
@@ -73,21 +74,21 @@ function initFixedMenu() {
 
 function initFancybox() {
     var $nhandongia = $('.nhan-bao-gia');
+    var visited = $.cookie('visited');
 
-    if (localStorage.getItem('visited') != 'shown') {
-        console.log(1);
+    if (visited == 'yes') {
+        return false;
+    } else {
         setTimeout(function() {
             $.fancybox.open({
                 src: '#nhanbaogia',
                 touch : false
             });
 
-            localStorage.setItem('visited','shown')
+            $.cookie('visited', 'yes', { expires: 30 });
 
             return false;
         }, 8000);
-    } else {
-        return false;
     }
 
     $nhandongia.click(function(e) {
@@ -155,8 +156,8 @@ function initFlickity() {
 }
 
 exports.init = function () {
-    initSearchBox();
-    initProjectHotSlider();
+    //initSearchBox();
+    //initProjectHotSlider();
     initProtectedContent();
     initGoToTop();
     initFixedMenu();

@@ -57,14 +57,16 @@
 }
 
 .alert {
-    padding: 0;
+    padding: 15px 0 0 0;
+    background: none;
+    border: none;
 }
 
 .alert-success {
     color: $primaryColor2;
 }
 
-.alert-success {
+.alert-warning {
     color: $red;
 }
 

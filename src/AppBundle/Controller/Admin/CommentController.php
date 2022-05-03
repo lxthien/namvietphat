@@ -78,7 +78,8 @@ class CommentController extends Controller
         $replyComment = new Comment();
         $replyComment->setNewsId( $comment->getNewsId() );
         $replyComment->setCommentId( $comment->getId() );
-        $replyComment->setEmail( $this->getUser()->getEmail() );
+        //$replyComment->setEmail( $this->getUser()->getEmail() );
+        $replyComment->setPhone( $this->get('settings_manager')->get('hotLine1'));
         $replyComment->setApproved( true );
         $replyComment->setAuthor( $this->getUser()->getName() );
         $replyComment->setIp( $this->container->get('request_stack')->getCurrentRequest()->getClientIp() );

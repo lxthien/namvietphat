@@ -153,8 +153,8 @@ class NewsController extends Controller
         }
 
         // Update viewCount for post
-        //$post->setViewCounts( $post->getViewCounts() + 1 );
-        //$this->getDoctrine()->getManager()->flush();
+        $post->setViewCounts( $post->getViewCounts() + 1 );
+        $this->getDoctrine()->getManager()->flush();
 
         $categoryPrimary = $request->query->get('cat');
 
@@ -726,7 +726,7 @@ class NewsController extends Controller
             $form = $this->createFormBuilder($comment)
                 ->add('content', TextareaType::class)
                 ->add('author', TextType::class)
-                ->add('email', EmailType::class)
+                ->add('phone', TextType::class)
                 ->add('ip', HiddenType::class)
                 ->add('news_id', HiddenType::class)
                 ->add('comment_id', HiddenType::class)
@@ -740,6 +740,7 @@ class NewsController extends Controller
                 $em->flush();
 
                 if (null !== $comment->getId()) {
+                    /*
                     $message = \Swift_Message::newInstance()
                         ->setSubject($this->get('translator')->trans('comment.email.title', ['%siteName%' => $this->get('settings_manager')->get('siteName')]))
                         ->setFrom(['hotro.xaydungminhduy@gmail.com' => $this->get('settings_manager')->get('siteName')])
@@ -757,12 +758,12 @@ class NewsController extends Controller
                     ;
 
                     $mailer->send($message);
-    
+                    */
                     return new Response(
                         json_encode(
                             array(
                                 'status'=>'success',
-                                'message' => '<div class="alert alert-success" role="alert">'.$this->get('translator')->trans('comment.thank_for_your_comment').'</div>'
+                                'message' => '<div class="alert alert-success" role="alert">Cảm ơn ý kiến cũng như câu hỏi của bạn! Chúng tôi sẽ xem xét và liên hệ lại trong thời gian sớm nhất</div>'
                             )
                         )
                     );

@@ -105,6 +105,20 @@
             }
         
             .news-container {
+                div[name="tableOfContents"] {
+                    margin-bottom: 6px;
+                }
+
+                div[style="margin-left:30px"] {
+                    display: list-item;
+                    list-style-type: disc;
+                }
+
+                hr {
+                    margin-top: 18px;
+                    margin-bottom: 18px;
+                }
+
                 ul, ol {
                     padding-left: 15px;
                     margin-bottom: 15px;
@@ -366,16 +380,16 @@
     margin-bottom: 20px;
 
     & > h4 {
-        font-size: 26px;
+        font-size: 28px;
         position: relative;
-        border-bottom: 3px solid $primaryColor;
+        color: $primaryColor2;
 
         &:before {
             position: absolute;
             bottom: -3px;
             left: 0;
             content: "";
-            width: 150px;
+            width: 250px;
             height: 3px;
             background: $primaryColor2;
         }

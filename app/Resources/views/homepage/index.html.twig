@@ -126,89 +126,61 @@
         </section>
 
         {% for blockOnHomepage in blocksOnHomepage %}
-            {% if blockOnHomepage.category.getId() != 10 and blockOnHomepage.category.getId() != 11 and blockOnHomepage.category.getId() != 12 %}
-                <div class="wrapper-container-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 title-list-news-items">
-                                <p class="text-uppercase p-title-news-items">
-                                    <img alt="{{ blockOnHomepage.category.getName() }}" src="{{ asset('assets/images/logo-icon.png') }}" width="35" height="25">
-                                    <i class="fa fa-angle-right"></i>
-                                    <a href="{{ path('news_category', {'level1': blockOnHomepage.category.getUrl() }) }}" title="{{ blockOnHomepage.category.getName() }}">{{ blockOnHomepage.category.getName() }}</a>
-                                </p>
-                                <span class="block-underline"></span>
-                                <p>{{ blockOnHomepage.description }}</p>
-                                
-                                {% if blockOnHomepage.listSubTabs|length > 0 %}
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs nav-tabs-sub-cat" role="tablist">
-                                        {% for listSubTab in blockOnHomepage.listSubTabs %}
-                                            <li role="presentation" {{ loop.index == 1 ? 'class="active"' : '' }}><a href="#tab_{{ listSubTab.subCategory.getId() }}" role="tab" data-toggle="tab">{{ listSubTab.subCategory.getName() }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
-                            </div>
-
+            <div class="wrapper-container-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 title-list-news-items">
+                            <p class="text-uppercase p-title-news-items">
+                                <img alt="{{ blockOnHomepage.category.getName() }}" src="{{ asset('assets/images/logo-icon.png') }}" width="35" height="25">
+                                <i class="fa fa-angle-right"></i>
+                                <a href="{{ path('news_category', {'level1': blockOnHomepage.category.getUrl() }) }}" title="{{ blockOnHomepage.category.getName() }}">{{ blockOnHomepage.category.getName() }}</a>
+                            </p>
+                            <span class="block-underline"></span>
+                            <p>{{ blockOnHomepage.description }}</p>
+                            
                             {% if blockOnHomepage.listSubTabs|length > 0 %}
-                                <!-- Tab panes -->
-                                <div class="tab-content">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-tabs-sub-cat" role="tablist">
                                     {% for listSubTab in blockOnHomepage.listSubTabs %}
-                                        <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? 'active' : '' }}" id="tab_{{ listSubTab.subCategory.getId() }}">
-                                            <div class="col-md-12 list-news-items">
-                                                <div class="row">
-                                                    {% for row in listSubTab.posts %}
-                                                        {% include 'news/components/itemsGridHomepage.html.twig' with {'category': listSubTab.subCategory} %}
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 view-all-category text-center">
-                                                <a href="{{ path('list_category', {'level1': blockOnHomepage.category.getUrl(), 'level2': listSubTab.subCategory.getUrl() }) }}">Xem tất cả bài viết</a>
-                                            </div>
-                                        </div>
+                                        <li role="presentation" {{ loop.index == 1 ? 'class="active"' : '' }}><a href="#tab_{{ listSubTab.subCategory.getId() }}" role="tab" data-toggle="tab">{{ listSubTab.subCategory.getName() }}</a></li>
                                     {% endfor %}
-                                </div>
-                            {% else %}
-                                <div class="col-md-12 list-news-items">
-                                    <div class="row">
-                                        {% for row in blockOnHomepage.posts %}
-                                            {% include 'news/components/itemsGridHomepage.html.twig' with {'category': blockOnHomepage.category} %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-md-12 view-all-category text-center">
-                                        <a href="{{ path('news_category', {'level1': blockOnHomepage.category.getUrl() }) }}">Xem tất cả bài viết</a>
-                                    </div>
-                                </div>
+                                </ul>
                             {% endif %}
                         </div>
-                    </div>
-                </div>
-            {% else %}
-                <div class="wrapper-container-item project-hot">
-                    <div class="container">
-                        <div class="row project-hot">
-                            <div class="col-md-12 title-list-news-items">
-                                <p class="text-center text-uppercase p-title-news-items">
-                                    <img alt="{{ blockOnHomepage.category.getName() }}" src="{{ asset('assets/images/icon-logo.png') }}" width="30" height="25" />
-                                    <i class="fas fa-angle-right"></i>
-                                    <a href="{{ path('list_category', {'level1':'du-an', 'level2': blockOnHomepage.category.getUrl() }) }}" title="Dự án {{ blockOnHomepage.category.getName() }}">Dự án {{ blockOnHomepage.category.getName() }}</a>
-                                </p>
-                                <span class="text-center block-underline"></span>
-                                <p>{{ blockOnHomepage.description }}</p>
+
+                        {% if blockOnHomepage.listSubTabs|length > 0 %}
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                {% for listSubTab in blockOnHomepage.listSubTabs %}
+                                    <div role="tabpanel" class="tab-pane {{ loop.index == 1 ? 'active' : '' }}" id="tab_{{ listSubTab.subCategory.getId() }}">
+                                        <div class="col-md-12 list-news-items">
+                                            <div class="row">
+                                                {% for row in listSubTab.posts %}
+                                                    {% include 'news/components/itemsGridHomepage.html.twig' with {'category': listSubTab.subCategory} %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 view-all-category text-center">
+                                            <a href="{{ path('list_category', {'level1': blockOnHomepage.category.getUrl(), 'level2': listSubTab.subCategory.getUrl() }) }}">Xem tất cả bài viết</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="list-news-items">
-                                <div class="bxslider">
+                        {% else %}
+                            <div class="col-md-12 list-news-items">
+                                <div class="row">
                                     {% for row in blockOnHomepage.posts %}
-                                        {{ include('news/components/itemsGridSlide.html.twig') }}
+                                        {% include 'news/components/itemsGridHomepage.html.twig' with {'category': blockOnHomepage.category} %}
                                     {% endfor %}
                                 </div>
+                                <div class="col-md-12 view-all-category text-center">
+                                    <a href="{{ path('news_category', {'level1': blockOnHomepage.category.getUrl() }) }}">Xem tất cả bài viết</a>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
-            {% endif %}
+            </div>
         {% endfor %}
 
         {{ render(controller(

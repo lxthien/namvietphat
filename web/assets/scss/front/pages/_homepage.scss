@@ -84,10 +84,18 @@
 
     .p-block-service-1 {
         font-size: 17px;
+
+        @media only screen and (max-width: 767.98px) {
+            font-size: 20px;
+        }
     }
 
     .p-block-service-2 {
         font-size: 19px;
+
+        @media only screen and (max-width: 767.98px) {
+            font-size: 22px;
+        }
     }
 
     .p-block-service-3 {
@@ -177,11 +185,15 @@
 
             @media only screen and (max-width: 767.98px) {
                 position: relative;
-                margin-top: 20px;
+                margin-top: 0;
                 color: $primaryColor2;
                 padding: 30px 0;
                 padding-top: 30px;
                 background: transparent;
+            }
+
+            @media only screen and (max-width: 767.98px) {
+                padding-top: 40px;
             }
 
             @media only screen and (max-width: 990px) {
@@ -201,8 +213,9 @@
 
                 p.p-block-service-1 {
                     @media only screen and (max-width: 767.98px) {
-                        font-size: 19px;
-                        font-weight: bold;
+                        font-size: 20px;
+                        font-family: $firaSansCondensedRegular;
+                        color: $black;
                     }
                 }
             }
