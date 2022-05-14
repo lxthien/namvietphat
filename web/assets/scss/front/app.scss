@@ -1,18 +1,18 @@
 // setting the value of this variable to an empty data URL is the only working solution
 // to load the Bootswatch web fonts locally and avoid loading them from Google servers
 // see https://github.com/thomaspark/bootswatch/issues/55#issuecomment-298093182
+@import "global/fonts";
 $web-font-path: 'data:text/css;base64,';
 
 @import "~bootswatch/flatly/variables";
 @import "global/bootstrap";
 
-@import '~bxslider/dist/jquery.bxslider.css';
+//@import '~bxslider/dist/jquery.bxslider.css';
 @import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
-@import '../../libs/starrating/css/rating.css';
+//@import '../../libs/starrating/css/rating.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css');
 @import '~jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.css';
 
-@import "global/fonts";
 @import "global/color_variables";
 @import "global/base_elements";
 @import "global/error";

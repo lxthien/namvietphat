@@ -12,84 +12,6 @@
     }
 }
 
-/* Slide project hot
-------------------------------------------------------------------------- */
-.project-hot {
-    margin: 0;
-
-    @media only screen and (max-width: 767.98px) {
-        margin: 10px 0 0;
-    }
-
-    .title-list-news-items {
-        p.p-title-news-items {
-            margin: 30px 0 10px;
-            font-style: normal;
-        }
-
-        .block-underline {
-            margin-bottom: 30px;
-        }
-    }
-
-    .list-news-items {
-        .bx-wrapper {
-            border: none;
-            margin-bottom: 0;
-
-            @media only screen and (min-width: 979.98px) {
-                max-width: 1260px !important;
-            }
-
-            .bx-viewport {
-                height: 100% !important;
-
-                .news-item {
-                    @media only screen and (min-width: 768px) {
-                        width: initial !important;
-                    }
-    
-                    .news-item-wrapper {
-                        width: 292.5px !important;
-    
-                        @media only screen and (max-width: 767.98px) {
-                            width: 100% !important;
-                        }
-    
-                        @media (min-width: 768px) and (max-width: 979.98px) {
-                            width: 220px !important;
-                        }
-                    }
-                }
-            }
-
-            .bx-controls {
-                .bx-controls-direction {
-                    .bx-prev {
-                        width: 40px;
-                        height: 120px;
-                        top: 35%;
-                        left: 0;
-                        background: url("../../../images/arrow-left.png") no-repeat;
-                        background-color: rgba(0, 0, 0, 0.3);
-                        background-size: 40px;
-                    }
-
-                    .bx-next {
-                        width: 40px;
-                        height: 120px;
-                        top: 35%;
-                        right: 0;
-                        background: url("../../../images/arrow-right.png") no-repeat;
-                        background-color: rgba(0, 0, 0, 0.3);
-                        background-size: 40px;
-                    }
-                }
-            }
-        }
-    }
-}
-
 /* Post detail
 ------------------------------------------------------------------------- */
 .wrapper-post-container {
@@ -102,6 +24,22 @@
                 line-height: 45px;
                 margin-bottom: 27px;
                 color: $primaryColor2;
+                font-family: $arial;
+            }
+
+            h2 {
+                font-family: $arial;
+                font-size: 30px;
+            }
+        
+            h3 {
+                font-family: $arial;
+                font-size: 25px;
+            }
+
+            h4 {
+                font-family: $arial;
+                font-size: 22px;
             }
         
             .news-container {
@@ -135,10 +73,6 @@
         
                 a {
                     color: $primaryColor2;
-                }
-        
-                h3 {
-                    font-size: 25px;
                 }
         
                 blockquote {

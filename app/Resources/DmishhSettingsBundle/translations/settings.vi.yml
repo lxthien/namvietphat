@@ -21,8 +21,11 @@ labels:
   hotLine2: Hotline 2
   marqueeHomepage: Slogan ở trang chủ
   googleAnalytic: Google analytic
+  googleTagManager1: Google tag manager 1
+  googleTagManager2: Google tag manager 2
   listCategoryOnHomepage: Danh sách danh mục hiển thị tại trang chủ
   topKeyword: Từ khóa nổi bật tại footer
+  facebookAppID: Facebook App ID
   facebookMessenger: Script facebook messenger
   displayNameCommentAs: Tên hiển thị tại mục bình luận
   linkToFacebook: Facebook

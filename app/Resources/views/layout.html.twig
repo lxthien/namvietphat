@@ -38,6 +38,7 @@
             <meta property="og:url" content="{{ app.request.uri }}" />
         {% endif %}
         <meta property="og:site_name" content="{{ get_setting('siteName') }}" />
+        <meta property="fb:app_id" content="{{ get_setting('facebookAppID') }}" />
         <!-- Open Graph data -->
 
         <!-- Twitter Card data -->
@@ -61,6 +62,8 @@
 
         {{ get_setting('googleAnalytic')|raw }}
 
+        {{ get_setting('googleTagManager1')|raw }}
+
         <!-- Custom css -->
         <style type="text/css">
             {{ source('@web/css/app.css', ignore_missing = true) }}
@@ -69,6 +72,8 @@
         {% endblock %}
     </head>
     <body>
+        {{ get_setting('googleTagManager2')|raw }}
+
         <div class="container-fluid wrapper">
             {{ include('layout/header.html.twig') }}
             {{ include('layout/menu.html.twig') }}

@@ -49,12 +49,13 @@ class HomepageController extends Controller
                                     $posts = $this->getDoctrine()
                                         ->getRepository(News::class)
                                         ->createQueryBuilder('n')
-                                        ->innerJoin('n.category', 't')
+                                        ->leftJoin('n.category', 't')
                                         ->where('t.id =:subCat')
                                         ->andWhere('n.enable = :enable')
                                         ->setParameter('subCat', $subCat->getId())
                                         ->setParameter('enable', 1)
                                         ->orderBy('n.createdAt', 'DESC')
+                                        ->setMaxResults( $listCategoriesOnHomepage[$i]["items"] )
                                         ->getQuery()->getResult();
                                 }
 
@@ -64,12 +65,13 @@ class HomepageController extends Controller
                             $posts = $this->getDoctrine()
                                 ->getRepository(News::class)
                                 ->createQueryBuilder('n')
-                                ->innerJoin('n.category', 't')
+                                ->leftJoin('n.category', 't')
                                 ->where('t.id =:subCat')
                                 ->andWhere('n.enable = :enable')
                                 ->setParameter('subCat', $category->getId())
                                 ->setParameter('enable', 1)
                                 ->orderBy('n.createdAt', 'DESC')
+                                ->setMaxResults( $listCategoriesOnHomepage[$i]["items"] )
                                 ->getQuery()->getResult();
                         }
                     }

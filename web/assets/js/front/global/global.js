@@ -1,28 +1,11 @@
 'use strict';
 
-require('bxslider/dist/jquery.bxslider');
+//require('bxslider/dist/jquery.bxslider');
 require('@fancyapps/fancybox');
 require('jquery-validation');
 require('../../../libs/lightslider/js/lightslider.js');
 require('../../../libs/jquery/jquery.cookie.js');
 require('jquery-bootstrap-scrolling-tabs/dist/jquery.scrolling-tabs.min.js');
-
-function initSearchBox() {
-    var $formSearch = $('#form-search');
-    var $searchField = $('.search-field');
-
-    $searchField.keypress(function (e) {
-        if (e.which == 13) {
-            e.preventDefault();
-
-            if ($searchField.val() === '') {
-                $searchField.focus();
-            } else {
-                $formSearch.submit();
-            }
-        }
-    });
-}
 
 function initProtectedContent() {
     $('body').bind('cut copy', function (e) {
@@ -36,23 +19,6 @@ function initGoToTop() {
     $goToTop.click(function() {
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
-    });
-}
-
-function initProjectHotSlider() {
-    $('.bxslider').show().bxSlider({
-        auto: true,
-        autoControls: false,
-        stopAutoOnClick: true,
-        pager: false,
-        controls: true,
-        minSlides: 1,
-        maxSlides: 4,
-        moveSlides: 1,
-        slideMargin: 20,
-        touchEnabled: false,
-        autoHover: true,
-        adaptiveHeight: true
     });
 }
 
@@ -76,6 +42,18 @@ function initFancybox() {
     var $nhandongia = $('.nhan-bao-gia');
     var visited = $.cookie('visited');
 
+    $nhandongia.click(function(e) {
+        e.preventDefault();
+
+        $.fancybox.open({
+            src: '#nhanbaogia',
+            touch : false
+        });
+
+        return false;
+    });
+
+    /*
     if (visited == 'yes') {
         return false;
     } else {
@@ -90,20 +68,12 @@ function initFancybox() {
             return false;
         }, 8000);
     }
-
-    $nhandongia.click(function(e) {
-        e.preventDefault();
-
-        $.fancybox.open({
-            src: '#nhanbaogia',
-            touch : false
-        });
-
-        return false;
-    });
+    */
 }
 
 function intHandleFormContact() {
+    window.dataLayer = window.dataLayer || [];
+    
     var $formComment = $('#nhanbaogia #form-contact');
 
     $formComment.on('click', '#form_send', function(e) {
@@ -117,6 +87,10 @@ function intHandleFormContact() {
                     if (response.status === 'success') {
                         $('#contact-form-message').html(response.message).show();
                         $('#nhanbaogia form').hide();
+
+                        window.dataLayer.push({
+                            'event': 'subscriber'
+                        });
                         
                         // Clear form comment
                         $formComment[0].reset();
@@ -155,15 +129,16 @@ function initFlickity() {
     });
 }
 
+function initScrollingTabs() {
+    $('.nav-tabs').scrollingTabs();
+}
+
 exports.init = function () {
-    //initSearchBox();
-    //initProjectHotSlider();
     initProtectedContent();
     initGoToTop();
     initFixedMenu();
     initFancybox();
     intHandleFormContact();
     initFlickity();
-
-    $('.nav-tabs').scrollingTabs();
+    initScrollingTabs();
 };

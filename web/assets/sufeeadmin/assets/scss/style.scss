@@ -150,7 +150,7 @@ aside.left-panel {
         text-transform: capitalize;
         display: block;
         min-height: 69px;
-        padding: 0;
+        padding: 5px 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -159,7 +159,7 @@ aside.left-panel {
             font-weight: 600;
         }
         img {
-            max-width: 160px;
+            max-width: 110px;
         }
         &.hidden {
             display: none;
@@ -1081,6 +1081,10 @@ header .form-inline {
   span{
       color: #ffffff;
       font-size: 24px;
+  }
+
+  img {
+      max-width: 25%;
   }
 }
 

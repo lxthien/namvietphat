@@ -20,7 +20,7 @@ class Builder implements ContainerAwareInterface
 
         $menu->addChild('Giới thiệu', [
             'route' => 'news_show',
-            'routeParameters' => ['slug' => 'gioi-thieu']
+            'routeParameters' => ['slug' => 'gioi-thieu-ve-nam-viet-phat']
         ])
         ->setAttribute('class', 'dropdown')
         ->setLinkAttribute('class', 'dropdown-toggle')
