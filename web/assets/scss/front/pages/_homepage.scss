@@ -86,7 +86,7 @@
         font-size: 17px;
 
         @media only screen and (max-width: 767.98px) {
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 
@@ -100,6 +100,10 @@
 
     .p-block-service-3 {
         font-size: 21px;
+
+        @media only screen and (max-width : 768px) {
+            text-align: center;
+        }
     }
 
     .col-md-3 {
@@ -213,7 +217,7 @@
 
                 p.p-block-service-1 {
                     @media only screen and (max-width: 767.98px) {
-                        font-size: 20px;
+                        font-size: 18px;
                         font-family: $firaSansCondensedRegular;
                         color: $black;
                     }
@@ -264,6 +268,10 @@
                             .baogia_img {
                                 width: 40px;
                                 position: relative;
+
+                                @media only screen and (max-width : 768px) {
+                                    width: 38px;
+                                }
 
                                 img {
                                     position: absolute;

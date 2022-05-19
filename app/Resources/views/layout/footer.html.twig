@@ -4,7 +4,14 @@
         <div class="row footer-top">
             <div class="col-12 col-sm-6 col-md-12 col-lg-2 footer-top-col-1">
                 <a href="{{ path('homepage') }}" title="{{ get_setting('siteName') }}">
-                    <img alt="{{ get_setting('siteName') }}" src="{{ asset('assets/images/logo-footer.png') }}">
+                    <img
+                        alt="{{ get_setting('siteName') }}"
+                        class="lazyload"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                        data-src="{{ asset('assets/images/logo-footer.png') }}"
+                        width="169"
+                        height="127"
+                    />
                 </a>
             </div>
             <div class="col-12 col-sm-6 col-md-12 col-lg-4 footer-top-col-2">
@@ -35,7 +42,7 @@
                 <h3 class="text-uppercase">Follow chúng tôi</h3>
                 <div class="footer-company">
                     <div class="fb-page"
-                        data-href="https://www.facebook.com/namvietphatcorp/"
+                        data-href="https://www.facebook.com/xaydungnamvietphat/"
                         data-tabs=""
                         data-width=""
                         data-height=""
@@ -43,7 +50,7 @@
                         data-adapt-container-width="true"
                         data-hide-cover="false"
                         data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/namvietphatcorp/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/namvietphatcorp/">Nam Việt Phát Corp</a></blockquote>
+                        <blockquote cite="https://www.facebook.com/xaydungnamvietphat/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/xaydungnamvietphat/">Xây Dựng Nam Việt Phát</a></blockquote>
                     </div>
                 </div>
                 <br>
