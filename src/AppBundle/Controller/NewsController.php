@@ -206,7 +206,9 @@ class NewsController extends Controller
             ->andWhere('c.approved = :approved')
             ->setParameter('news_id', $post->getId())
             ->setParameter('approved', 1)
-            ->getQuery()->getResult();
+            ->orderBy('c.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
 
         // Render form comment for post.
         $form = $this->renderFormComment($post);
@@ -400,7 +402,7 @@ class NewsController extends Controller
         // Filter content to support Lazy Loading
         $contentsAmp = $this->amploadContent($post);
 
-        return $this->render('amp/amp-theme/index.html.twig', [
+        return $this->render('amp/index.html.twig', [
             'post'          => $post,
             'contentsAmp'   => $contentsAmp,
             'relatedNews'   => !empty($relatedNews) ? $relatedNews : NULL,
@@ -649,7 +651,7 @@ class NewsController extends Controller
         $query = $this->getDoctrine()
             ->getRepository(News::class)
             ->createQueryBuilder('p')
-            ->where('p.title LIKE :q')
+            ->where('p.title LIKE :q OR p.description LIKE :q')
             ->andWhere('p.enable = :enable')
             ->andWhere('p.postType = :postType')
             ->setParameter('q', '%'.$request->query->get('q').'%')

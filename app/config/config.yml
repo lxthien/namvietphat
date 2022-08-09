@@ -72,7 +72,7 @@ twig:
         - 'form/fields.html.twig'
     paths:
         'web/build': 'web'
-        'app/Resources/views/amp/amp-theme': 'amp_theme'
+        'app/Resources/views/amp': 'amp_theme'
 
 # Doctrine Configuration (used to access databases and manipulate their information)
 doctrine:
@@ -196,6 +196,10 @@ liip_imagine:
             quality: 100
             filters:
                 thumbnail: { size: [290, 250], mode: outbound }
+        news_share_800_420:
+            quality: 100
+            filters:
+                thumbnail: { size: [800, 420], mode: outbound }
         banner_768_400:
             quality: 100
             filters:

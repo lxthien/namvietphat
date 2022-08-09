@@ -8,7 +8,7 @@
                     <div class="media-left">
                         <amp-img
                             alt="{{ comment.getAuthor() }}"
-                            src="{{ asset('assets/images/user.png') | imagine_filter('user') }}"
+                            src="{{ asset('assets/images/user.jpg') | imagine_filter('user') }}"
                             width="65"
                             height="65"
                             layout="responsive"
@@ -18,15 +18,14 @@
                     <div class="media-body">
                         <h5 class="mt-0">{{ comment.getAuthor() }}</h5>
                         <div class="comment-container">{{ comment.getContent()|raw }}</div>
-                        <a class="comment-reply-link" id="comment-reply" href="#" data-post-id="{{ comment.getId() }}">{{ 'comment.reply'|trans }}</a>
                         <ul class="media-list">
                         {% for replyComment in comments %}
                             {% if replyComment.getCommentId is same as (comment.getId()) %}
                                 <li class="media">
                                     <div class="media-left">
                                         <amp-img
-                                            alt="{{ replyComment.getAuthor() is same as ('Webmaster') ? get_setting('displayNameCommentAs')|raw : replyComment.getAuthor() }}"
-                                            src="{{ asset('assets/images/user.png') | imagine_filter('user') }}"
+                                            alt="{{ comment.getAuthor() }}"
+                                            src="{{ asset('assets/images/user.jpg') | imagine_filter('user') }}"
                                             width="65"
                                             height="65"
                                             layout="responsive"
@@ -34,7 +33,7 @@
                                         </amp-img>
                                     </div>
                                     <div class="media-body">
-                                        <h5 class="mt-0">{{ replyComment.getAuthor() is same as ('Webmaster') ? get_setting('displayNameCommentAs')|raw : replyComment.getAuthor() }}</h5>
+                                        <h5 class="mt-0">{{ get_setting('siteName')|raw }}</h5>
                                         <div class="comment-container">{{ replyComment.getContent()|raw }}</div>
                                     </div>
                                 </li>

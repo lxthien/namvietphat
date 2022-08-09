@@ -23,6 +23,8 @@ labels:
   googleAnalytic: Google analytic
   googleTagManager1: Google tag manager 1
   googleTagManager2: Google tag manager 2
+  ampGTM: AMP GTM
+  ga4MeasurementID: GA4 Measurement ID
   listCategoryOnHomepage: Danh sách danh mục hiển thị tại trang chủ
   topKeyword: Từ khóa nổi bật tại footer
   facebookAppID: Facebook App ID

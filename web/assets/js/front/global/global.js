@@ -52,23 +52,6 @@ function initFancybox() {
 
         return false;
     });
-
-    /*
-    if (visited == 'yes') {
-        return false;
-    } else {
-        setTimeout(function() {
-            $.fancybox.open({
-                src: '#nhanbaogia',
-                touch : false
-            });
-
-            $.cookie('visited', 'yes', { expires: 30 });
-
-            return false;
-        }, 8000);
-    }
-    */
 }
 
 function intHandleFormContact() {

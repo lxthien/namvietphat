@@ -866,7 +866,7 @@ aside.left-panel {
     .navbar .navbar-brand span {
       font-weight: 600; }
     .navbar .navbar-brand img {
-      max-width: 160px; }
+      max-width: 130px; padding: 10px 0; }
     .navbar .navbar-brand.hidden {
       display: none; }
   .navbar .menu-title {
@@ -1596,6 +1596,8 @@ header .form-inline {
   .login-logo span {
     color: #ffffff;
     font-size: 24px; }
+    .login-logo img {
+        width: 30%; }
 
 .login-content {
   max-width: 540px;

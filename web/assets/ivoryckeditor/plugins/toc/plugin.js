@@ -13,34 +13,33 @@
         
                     allowedContent: '*[id,name,class]{margin-left}',
                     // Define the function that will be fired when the command is executed.
-                    exec: function( editor )
-                    {
+                    exec: function( editor ) {
                         //remove already exisiting tocs...
+                        /*
                         var tocElements = editor.document.$.getElementsByName("tableOfContents");
-                        for (var j = tocElements.length; j > 0; j--) 
-                        {
+                        for (var j = tocElements.length; j > 0; j--) {
                             var oldid = tocElements[j-1].getAttribute("id").toString();
                             editor.document.getById(oldid).remove();
                         }
+                        */
+
                         //find all headings
                         var list = [],
                         nodes = editor.editable().find('h1,h2,h3,h4,h5,h6,');
 
-                        if ( nodes.count() == 0 )
-                        {
+                        if ( nodes.count() == 0 ) {
                             alert( editor.lang.toc.notitles );
                             return;
                         }
                         //iterate over headings
                         var tocItems = "";
-                        for ( var i = 0 ; i < nodes.count() ; i++ )
-                        {
+                        for ( var i = 0 ; i < nodes.count() ; i++ ) {
                             var node = nodes.getItem(i),
                                 //level can be used for indenting. it contains a number between 0 (h1) and 5 (h6).
                                 level = parseInt( node.getName().substr( 1 ) ) - 1;
 
                             var text = new CKEDITOR.dom.text( CKEDITOR.tools.trim( node.getText() ), editor.document);
-                            var id="";
+                            var id = "";
                             //check if heading has id
                             if (node.hasAttribute("id")) {
                                 id = node.getText();
@@ -49,16 +48,22 @@
                                 id = text.getText().replace(/[^A-Za-z0-9\_\-]/g, "+");
                                 node.setAttribute( 'id', node.getText() );
                             }
-                            //create name-attribute based on id
-                            node.setAttribute( 'name', node.getText() );
-                
+
+                            node.removeAttribute('name');
+
                             //build toc entries as divs
-                            tocItems = tocItems + '<div style="margin-left:'+level*30+'px" id="' + id.toString() + '-toc" name="tableOfContents">' + '<a href="#' + text.getText().toString() + '"><i>' + text.getText().toString() + '</i></a></div>';
+                            tocItems = tocItems + '<div class="table-of-contents-item" style="margin-left:'+level*30+'px" id="' + id.toString() + '-toc" >' + '<a href="#' + text.getText().toString() + '"><i>' + text.getText().toString() + '</i></a></div>';
                         }
 
                         //output toc
-                        var tocNode = '<p name="tableOfContents" id="main-toc"><b><u>' + editor.lang.toc.ToC + '</u></b></p>' + tocItems + '<hr id="hr-toc" name="tableOfContents"/>';
+                        var tocNode = '<div class="table-of-contents"><p id="main-toc"><b><u>' + editor.lang.toc.ToC + '</u></b></p>' + tocItems + '<hr id="hr-toc" /></div>';
                         editor.insertHtml(tocNode);
+
+                        // Remove element with attribute name
+                        editor.document.$.querySelectorAll('[name]').forEach(function(el){
+                            el.removeAttribute("data-cke-saved-name");
+                            el.removeAttribute("name");
+                        })
                     }
                 });
 
