@@ -5,6 +5,10 @@
         display: block;
         width: 160px;
         text-align: center;
+
+        @media only screen and (max-width: 990px) {
+            left: 40%;
+        }
     }
 
     .navbar>.container .navbar-brand-centered, 
@@ -73,6 +77,10 @@
                             width: 68px;
                             margin: 0 auto;
                             vertical-align: middle;
+                        }
+
+                        @media only screen and (max-width: 990px) {
+                            width: 70px;
                         }
                     }
                 }
@@ -294,6 +302,10 @@
 
                 img {
                     width: 68px;
+
+                    @media only screen and (max-width: 990px) {
+                        width: 70px;
+                    }
                 }
             }
 
@@ -302,6 +314,10 @@
                     padding: 20px 15px;
 
                     @media only screen and (max-width: 767.98px) {
+                        padding: 10px;
+                    }
+
+                    @media only screen and (max-width: 990px) {
                         padding: 10px;
                     }
                 }

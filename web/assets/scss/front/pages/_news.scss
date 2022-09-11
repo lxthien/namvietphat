@@ -258,13 +258,13 @@
                 padding: 0 8px;
                 font-size: 18px;
                 line-height: 25px;
-                height: 47px;
-                max-height: 47px;
+                height: 75px;
+                max-height: 75px;
                 color: $primaryColor2;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 font-family: $firaSansCondensedBold;
 
@@ -273,12 +273,12 @@
                 }
 
                 @media only screen and (max-width: 767.98px) {
-                    font-size: 22px;
+                    font-size: 19px;
                     line-height: 30px;
                     padding: 10px 10px 3px;
                     -webkit-line-clamp: 3;
                     max-height: max-content;
-                    height: auto;
+                    height: 100px;
                 }
             }
 

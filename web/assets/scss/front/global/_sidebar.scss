@@ -31,16 +31,16 @@
         .sidebar-item {
             a.sidebar-item-url {
                 color: $primaryColor2;
-                margin: 8px 0;
-                min-height: 49px;
-                height: 49px;
+                margin: 8px 0 15px;
+                min-height: 75px;
+                height: 75px;
                 font-family: $firaSansCondensedBold;
                 font-size: 18px;
                 line-height: 24px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
             }
         }

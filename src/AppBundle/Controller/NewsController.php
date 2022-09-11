@@ -549,7 +549,7 @@ class NewsController extends Controller
             ->getRepository(NewsCategory::class)
             ->find($categoryId);
 
-        $listCategoriesIds = array($category->getId());
+        $listCategoriesIds[] = $category->getId();
 
         $allSubCategories = $this->getDoctrine()
                                 ->getRepository(NewsCategory::class)
@@ -570,10 +570,10 @@ class NewsController extends Controller
             ->andWhere('n.enable = :enable')
             ->setParameter('listCategoriesIds', $listCategoriesIds)
             ->setParameter('enable', 1)
-            ->setMaxResults( 10 )
             ->orderBy('n.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+            ->groupBy('n.id')
+            ->setMaxResults(10)
+            ->getQuery()->getResult();
 
         if ($template) {
             return $this->render($template, [
