@@ -76,28 +76,28 @@ class Builder implements ContainerAwareInterface
         ->setChildrenAttribute('class', 'dropdown-menu');
 
         $menu['Xây dựng nhà']->addChild('Xây nhà trọn gói', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-nha-tron-goi']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-nha-tron-goi']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây dựng phần thô', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-dung-phan-tho']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-dung-phan-tho']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây nhà biệt thự', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-nha-biet-thu']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-nha-biet-thu']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây nhà cấp 4', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-nha-cap-4']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-nha-cap-4']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây dựng nhà xưởng', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-dung-nha-xuong']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-dung-nha-xuong']
         ]);
 
         return $menu;
@@ -246,28 +246,28 @@ class Builder implements ContainerAwareInterface
         ->setChildrenAttribute('class', 'dropdown-menu');
 
         $menu['Xây dựng nhà']->addChild('Xây nhà trọn gói', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-nha-tron-goi']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-nha-tron-goi']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây dựng phần thô', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-dung-phan-tho']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-dung-phan-tho']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây nhà biệt thự', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-nha-biet-thu']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-nha-biet-thu']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây nhà cấp 4', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-nha-cap-4']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-nha-cap-4']
         ]);
 
         $menu['Xây dựng nhà']->addChild('Xây dựng nhà xưởng', [
-            'route' => 'news_category',
-            'routeParameters' => ['level1' => 'xay-dung-nha-xuong']
+            'route' => 'list_category',
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-dung-nha-xuong']
         ]);
 
         $menu->addChild('Sửa chữa nhà', [
