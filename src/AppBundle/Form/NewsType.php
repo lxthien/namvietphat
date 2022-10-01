@@ -64,21 +64,18 @@ class NewsType extends AbstractType
                 'required' => false,
             ])
             ->add('pageTitle', TextType::class, [
+                'attr' => ['class' => 'page-title'],
                 'required' => false,
                 'label' => 'label.pageTitle',
             ])
             ->add('pageDescription', TextareaType::class, [
+                'attr' => ['class' => 'page-description'],
                 'required' => false,
                 'label' => 'label.pageDescription',
             ])
             ->add('pageKeyword', TextType::class, [
                 'required' => false,
                 'label' => 'label.pageKeyword',
-            ])
-            ->add('autoFulfillAddress', CheckboxType::class, [
-                'required' => false,
-                'label' => 'Auto Fulfill Address',
-                'attr' => ['checked' => 'checked']
             ])
         ;
     }

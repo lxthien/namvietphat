@@ -16,6 +16,8 @@ $(function() {
 
     initMakePrimaryCategory();
 
+    initSeo();
+
     /**
      * Create sluggable from name
      * 
@@ -116,6 +118,24 @@ $(function() {
                 $('#news_categoryPrimary').val(categoryId);
             }
         });
+    }
+
+    function initSeo() {
+        $(".page-title").keyup(function(){
+            $('.help-page-title').text($(this).val().length);
+        });
+
+        $(".page-description").keyup(function(){
+            $('.help-page-description').text($(this).val().length);
+        });
+
+        if( $('.page-title').val().length > 0 ) {
+            $('.help-page-title').text($('.page-title').val().length);
+        }
+
+        if( $('.page-description').val().length > 0 ) {
+            $('.help-page-description').text($('.page-description').val().length);
+        }
     }
 
     // Bootstrap-tagsinput initialization
