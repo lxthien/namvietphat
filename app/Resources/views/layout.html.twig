@@ -33,6 +33,7 @@
             <meta property="og:type" content="website" />
             <meta property="og:title" content="{{ block('title') }}" />
             <meta property="og:description" content="{{ block('description') }}" />
+            <meta property="og:image" content="{{ absolute_url(asset('assets/images/logo.png')) }}" />
         {% endblock %}
         {% if app.request.attributes.get('_route') is not null %}
             <meta property="og:url" content="{{ app.request.uri }}" />
@@ -43,13 +44,15 @@
 
         <!-- Twitter Card data -->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@namvietphat">
+        <meta name="twitter:site" content="@namvietphatcorp">
         <meta name="twitter:title" content="{{ block('title') }}">
         <meta name="twitter:description" content="{{ block('description') }}">
-        <meta name="twitter:creator" content="@namvietphat">
+        <meta name="twitter:creator" content="@namvietphatcorp">
         {% block twitterImage %}
         {% endblock %}
         <!-- Twitter Card data -->
+
+        <meta name="yandex-verification" content="6d3f278ed26f14b2" />
 
         {% block structuredOrganization %}
         {% endblock %}
