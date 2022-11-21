@@ -94,6 +94,13 @@ class NewsCategory
     private $pageKeyword = null;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="sortBy", type="string", length=255, nullable=true)
+     */
+    private $sortBy = null;
+
+    /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -249,6 +256,18 @@ class NewsCategory
     public function getPageKeyword()
     {
         return $this->pageKeyword;
+    }
+
+    public function setSortBy($sortBy)
+    {
+        $this->sortBy = $sortBy;
+
+        return $this;
+    }
+
+    public function getSortBy()
+    {
+        return $this->sortBy;
     }
 
     public function setCreatedAt($createdAt)

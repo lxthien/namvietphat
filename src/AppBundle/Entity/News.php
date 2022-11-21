@@ -147,6 +147,13 @@ class News
     /**
      * @var int
      *
+     * @ORM\Column(name="ordering", type="integer", nullable=true)
+     */
+    private $ordering = null;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="categoryPrimary", type="integer")
      */
     private $categoryPrimary = 0;
@@ -406,6 +413,18 @@ class News
     public function getViewCounts()
     {
         return $this->viewCounts;
+    }
+
+    public function setOrdering($ordering)
+    {
+        $this->ordering = $ordering;
+
+        return $this;
+    }
+
+    public function getOrdering()
+    {
+        return $this->ordering;
     }
 
     public function setCategoryPrimary($categoryPrimary)

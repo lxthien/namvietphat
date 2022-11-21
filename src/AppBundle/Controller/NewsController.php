@@ -112,11 +112,19 @@ class NewsController extends Controller
                 ->getQuery()->getResult();
         }
 
+        $ordering = $category->getSortBy() == null ? '{"createdAt":"DESC"}' : $category->getSortBy();
+        $orderingData = (array)(json_decode($ordering));
+        $orderingKey = array_keys($orderingData);
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $news,
             $page,
-            $this->get('settings_manager')->get('numberRecordOnPage') ?: 10
+            $this->get('settings_manager')->get('numberRecordOnPage') ?: 10,
+            [
+                'defaultSortFieldName' => $orderingKey[0],
+                'defaultSortDirection' => $orderingData[$orderingKey[0]]
+            ]
         );
 
         return $this->render('news/list.html.twig', [

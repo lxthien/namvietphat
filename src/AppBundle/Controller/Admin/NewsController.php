@@ -60,6 +60,10 @@ class NewsController extends Controller
                 $em->persist($news);
                 $em->flush();
 
+                // Update Ordering for post
+                $news->setOrdering( $news->getId() );
+                $this->getDoctrine()->getManager()->flush();
+
                 $emRating = $this->getDoctrine()->getManager();
                     
                 $rating = new Rating();

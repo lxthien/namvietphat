@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -43,6 +44,12 @@ class NewsCategoryType extends AbstractType
             ->add('template', TextType::class, [
                 'required' => false,
                 'label' => 'Template',
+            ])
+            ->add('sortBy', ChoiceType::class, [
+                'required' => false,
+                'label' => 'label.sortBy',
+                'choices' => ['label.default' => '{"createdAt":"desc"}', 'label.ordering' => '{"ordering":"asc"}'],
+                'empty_data' => '"createdAt":"desc"}'
             ])
             ->add('pageTitle', TextType::class, [
                 'required' => false,
