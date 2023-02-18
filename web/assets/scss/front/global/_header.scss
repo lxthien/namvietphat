@@ -1,7 +1,7 @@
 .header {
     padding: 0;
-    background-color: $white;
-    color: $primaryColor2;
+    background-color: $primaryColor2;
+    color: $white;
     height: 40px;
 
     .col-md-6 {
@@ -18,7 +18,7 @@
         }
 
         a {
-            color: $primaryColor2;
+            color: $white;
             line-height: 40px;
 
             &:hover {
@@ -33,11 +33,15 @@
             padding-left: 15px;
 
             a {
+                &:hover {
+                    text-decoration: none;
+                }
+                
                 padding: 0 5px;
 
                 i {
                     font-size: 20px;
-                    color: $primaryColor2;
+                    color: $white;
                 }
             }
         }
