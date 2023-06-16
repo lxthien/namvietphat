@@ -26,21 +26,17 @@ use blackknight467\StarRatingBundle\Form\RatingType as RatingType;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
 
+use AppBundle\Utils\ConvertImages;
+
 class NewsController extends Controller
 {
-    /**
-     * @var UploaderHelper
-     */
     private $helper;
+    private $convertImages;
 
-    /**
-     * Constructs a new instance of UploaderExtension.
-     *
-     * @param UploaderHelper $helper
-     */
-    public function __construct(UploaderHelper $helper)
+    public function __construct(UploaderHelper $helper, ConvertImages $convertImages)
     {
         $this->helper = $helper;
+        $this->convertImages = $convertImages;
     }
 
     /**
@@ -71,6 +67,10 @@ class NewsController extends Controller
         // Init breadcrum for category page
         $breadcrumbs = $this->buildBreadcrums(!empty($level2) ? $subCategory : $category, null, null);
 
+        $ordering = $category->getSortBy() == null ? '{"createdAt":"DESC"}' : $category->getSortBy();
+        $orderingData = (array)(json_decode($ordering));
+        $orderingKey = array_keys($orderingData);
+
         $listCategories = array();
         
         if (empty($level2)) {
@@ -97,7 +97,7 @@ class NewsController extends Controller
                 ->andWhere('n.enable = :enable')
                 ->setParameter('listCategoriesIds', $listCategoriesIds)
                 ->setParameter('enable', 1)
-                ->orderBy('n.createdAt', 'DESC')
+                ->orderBy('n.'.$orderingKey[0], $orderingData[$orderingKey[0]])
                 ->getQuery()->getResult();
         } else {
             $news = $this->getDoctrine()
@@ -108,23 +108,15 @@ class NewsController extends Controller
                 ->andWhere('n.enable = :enable')
                 ->setParameter('newscategory_id', $subCategory->getId())
                 ->setParameter('enable', 1)
-                ->orderBy('n.createdAt', 'DESC')
+                ->orderBy('n.'.$orderingKey[0], $orderingData[$orderingKey[0]])
                 ->getQuery()->getResult();
         }
-
-        $ordering = $category->getSortBy() == null ? '{"createdAt":"DESC"}' : $category->getSortBy();
-        $orderingData = (array)(json_decode($ordering));
-        $orderingKey = array_keys($orderingData);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $news,
             $page,
-            $this->get('settings_manager')->get('numberRecordOnPage') ?: 10,
-            [
-                'defaultSortFieldName' => $orderingKey[0],
-                'defaultSortDirection' => $orderingData[$orderingKey[0]]
-            ]
+            $this->get('settings_manager')->get('numberRecordOnPage') ?: 10
         );
 
         return $this->render('news/list.html.twig', [
@@ -305,6 +297,12 @@ class NewsController extends Controller
             $alt = $img->getAttribute('alt');
 
             list($width, $height) = @getimagesize(substr($src, 1));
+
+            if ($this->convertImages->webpFileExists($src, '')) {
+                $src = $src . '.webp';
+            } else {
+                $src = !is_bool($this->convertImages->webpConvert2($src, '')) ? $this->convertImages->webpConvert2($src, '') : $src;
+            }
 
             $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
             $img->setAttribute('data-src', $src);
@@ -646,9 +644,7 @@ class NewsController extends Controller
         $form->handleRequest($request);
         
         if (!$form->isSubmitted() && empty($request->query->get('q'))) {
-            return $this->render('news/formSearch.html.twig', [
-                'form' => $form->createView(),
-            ]);
+            return $this->redirectToRoute('homepage', [], 301);
         }
 
         $q = $form->getData()['q'];

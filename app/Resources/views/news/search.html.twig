@@ -5,9 +5,7 @@
     <noscript><link rel="stylesheet" href="{{ asset('build/css/list.css') }}" ></noscript>
 {% endblock %}
 
-{% block title %}
-    {{ 'post.archives.title'|trans({'%title%': q, '%currentPage%': pagination.currentPageNumber, '%totalPage%': pagination.pageCount}) }}
-{% endblock %}
+{% block title %}{{ 'post.archives.title'|trans({'%title%': q, '%currentPage%': pagination.currentPageNumber, '%totalPage%': pagination.pageCount}) }}{% endblock %}
 
 {% block structuredOpenGraph %}
     <meta property="og:type" content="object" />
