@@ -14,7 +14,7 @@
                             </button>
                             <div class="navbar-brand navbar-brand-centered">
                                 <a href="{{ path('homepage') }}" title="{{ get_setting('siteName') }}">
-                                    <img alt="{{ get_setting('siteName') }}" src="{{ asset('assets/images/logo.png') }}" width="130" height="98" >
+                                    <img alt="{{ get_setting('siteName') }}" src="{{ asset(convert_images.webpConvert2(asset('/assets/images/logo.png'), '')) }}" width="130" height="98" >
                                 </a>
                             </div>
                             <button type="button" class="navbar-toggle collapsed header-search" data-toggle="collapse" data-target="#search">

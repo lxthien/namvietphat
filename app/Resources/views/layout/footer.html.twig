@@ -8,7 +8,7 @@
                         alt="{{ get_setting('siteName') }}"
                         class="lazyload"
                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                        data-src="{{ asset('assets/images/logo-footer.png') }}"
+                        data-src="{{ asset(convert_images.webpConvert2(asset('/assets/images/logo-footer.png'), '')) }}"
                         width="169"
                         height="127"
                     />

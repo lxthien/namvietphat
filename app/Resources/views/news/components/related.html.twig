@@ -10,13 +10,23 @@
                         {% else %}
                             {% set url = path('news_show', {'slug': row.getUrl() }) %}
                         {% endif %}
+
+                        {% set imagePath = (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) %}
+                        {% set imagePathFilter = (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_406_280') %}
+                                                
+                        {% if convert_images.fileExists(imagePath) == false %}
+                            {% set imagePath = imagePath | imagine_filter(template) %}
+                        {% else %}
+                            {% set imagePath = convert_images.webpConvert(imagePathFilter, '', true) %}
+                        {% endif %}
+                        
                         <a title="{{ row.getTitle() }}" href="{{ url }}">
                             <img
                                 width="212"
                                 height="150"
                                 class="img-thumbnail lazyload"
                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                data-src="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('news_406_280') }}"
+                                data-src="{{ imagePath != false ? asset(imagePath) : asset(imagePathFilter) }}"
                                 alt="{{row.getTitle()}}" >
                         </a>
                         <a class="related-title" href="{{ url }}" title="{{ row.getTitle() }}">
