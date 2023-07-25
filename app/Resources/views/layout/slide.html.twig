@@ -8,19 +8,32 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             {% for row in banners %}
+            
+            {% set imagePath = (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) %}
+            {% set imagePathFilter = (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_1920_650') %}
+            {% set imagePathFilterMobile = (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_768_400') %}
+                                    
+            {% if convert_images.fileExists(imagePath) == false %}
+                {% set imagePath = imagePath | imagine_filter('news_277_220') %}
+                {% set imagePathMobile = imagePath | imagine_filter('news_345_250') %}
+            {% else %}
+                {% set imagePath = convert_images.webpConvert(imagePathFilter, '', true) %}
+                {% set imagePathMobile = convert_images.webpConvert(imagePathFilterMobile, '', true) %}
+            {% endif %}
+            
             <div class="item {{ loop.first ? 'active' : '' }}">
                 {% if (row.getUrl() != '') %}
                     <a href="{{ row.getUrl() }}">
                         <picture>
                             <source
-                                srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_768_400') }}"
+                                srcset="{{ imagePathMobile != false ? asset(imagePathMobile) : asset(imagePathFilterMobile) }}"
                                 media="(max-width: 799px)" />
                             <source
-                                srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_1920_650') }}"
+                                srcset="{{ imagePath != false ? asset(imagePath) : asset(imagePathFilter) }}"
                                 media="(min-width: 800px)" />
                             <img
                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                data-src="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_1920_650') }}"
+                                data-src="{{ imagePath != false ? asset(imagePath) : asset(imagePathFilter) }}"
                                 alt="{{ row.getName() }}"
                                 class="lazyload" />
                         </picture>
@@ -28,14 +41,14 @@
                 {% else %}
                     <picture>
                         <source
-                            srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_768_400') }}"
+                            srcset="{{ imagePathMobile != false ? asset(imagePathMobile) : asset(imagePathFilterMobile) }}"
                             media="(max-width: 799px)" />
                         <source
-                            srcset="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_1920_650') }}"
+                            srcset="{{ imagePath != false ? asset(imagePath) : asset(imagePathFilter) }}"
                             media="(min-width: 800px)" />
                         <img
                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                            data-src="{{ (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_1920_650') }}"
+                            data-src="{{ imagePath != false ? asset(imagePath) : asset(imagePathFilter) }}"
                             alt="{{ row.getName() }}"
                             class="lazyload" />
                     </picture>

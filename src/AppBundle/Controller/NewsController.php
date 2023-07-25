@@ -285,7 +285,7 @@ class NewsController extends Controller
         // set error level
         $internalErrors = libxml_use_internal_errors(true);
 
-        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED);
 
         // Restore error level
         libxml_use_internal_errors($internalErrors);
@@ -298,18 +298,14 @@ class NewsController extends Controller
 
             list($width, $height) = @getimagesize(substr($src, 1));
 
-            if ($this->convertImages->webpFileExists($src, '')) {
-                $src = $src . '.webp';
-            } else {
-                $src = !is_bool($this->convertImages->webpConvert2($src, '')) ? $this->convertImages->webpConvert2($src, '') : $src;
-            }
+            $src = !is_bool($this->convertImages->webpConvert2($src, '')) ? $this->convertImages->webpConvert2($src, '') : $src;
 
-            $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
             $img->setAttribute('data-src', $src);
             $img->setAttribute('alt', $alt);
-            $img->setAttribute('width', !empty($width) ? $width : 500);
-            $img->setAttribute('height', !empty($height) ? $height : 500);
+            $img->setAttribute('width', !empty($width) ? $width > 900 ? 900 : $width : 500);
+            $img->setAttribute('height', !empty($height) ? $width > 900 ? round(($height*900)/$width) : $height : 500);
             $img->setAttribute('class', 'lazyload');
+            $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
         }
         
         return html_entity_decode($dom->saveHTML());
