@@ -308,8 +308,7 @@ class NewsController extends Controller
             $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
         }
         
-        $newContent = html_entity_decode($dom->saveHTML());
-        return preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $newContent));
+        return html_entity_decode($dom->saveHTML());
     }
 
     /**
