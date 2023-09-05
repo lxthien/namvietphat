@@ -285,7 +285,7 @@ class NewsController extends Controller
         // set error level
         $internalErrors = libxml_use_internal_errors(true);
 
-        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED);
+        $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 
         // Restore error level
         libxml_use_internal_errors($internalErrors);
@@ -308,7 +308,8 @@ class NewsController extends Controller
             $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
         }
         
-        return html_entity_decode($dom->saveHTML());
+        $newContent = html_entity_decode($dom->saveHTML());
+        return preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $newContent));
     }
 
     /**

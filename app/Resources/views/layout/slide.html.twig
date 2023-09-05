@@ -14,8 +14,8 @@
             {% set imagePathFilterMobile = (vich_uploader_asset(row, 'imageFile') ? vich_uploader_asset(row, 'imageFile') : asset('assets/images/no-image.png')) | imagine_filter('banner_768_400') %}
                                     
             {% if convert_images.fileExists(imagePath) == false %}
-                {% set imagePath = imagePath | imagine_filter('news_277_220') %}
-                {% set imagePathMobile = imagePath | imagine_filter('news_345_250') %}
+                {% set imagePath = imagePath | imagine_filter('banner_1920_650') %}
+                {% set imagePathMobile = imagePath | imagine_filter('banner_768_400') %}
             {% else %}
                 {% set imagePath = convert_images.webpConvert(imagePathFilter, '', true) %}
                 {% set imagePathMobile = convert_images.webpConvert(imagePathFilterMobile, '', true) %}
