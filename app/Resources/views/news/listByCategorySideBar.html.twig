@@ -14,9 +14,7 @@
                         width="188"
                         height="120" />
                 </a>
-                <a class="sidebar-item-url" href="{{ path('news_show', {'slug': row.getUrl() }) }}" title="{{ row.getTitle() }}">
-                    <span>{{ row.getTitle() }}</span>
-                </a>
+                <h2><a class="sidebar-item-url" href="{{ path('news_show', {'slug': row.getUrl() }) }}" title="{{ row.getTitle() }}"><span>{{ row.getTitle() }}</span></a></h2>
             </div>
         {% endfor %}
     </div>

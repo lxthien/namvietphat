@@ -38,6 +38,30 @@ function initFixedMenu() {
     });
 }
 
+function initFixedSidebar() {
+    $(window).scroll(function() {
+        var $sidebar = $("#sidebar .sidebar"),
+            $pageDetailLeft = $('.wrapper-post-container-left'),
+            scrollTop = $(this).scrollTop(),
+            pageDetailLeftHeight =  $pageDetailLeft.outerHeight(),
+            sidebarHeight = $sidebar.height(),
+            positionFixedMax = pageDetailLeftHeight - sidebarHeight,
+            positionFixed = scrollTop < 70 ? 70 : positionFixedMax > scrollTop ? 70 : positionFixedMax - scrollTop;
+        
+        if (pageDetailLeftHeight > sidebarHeight) {
+            if (scrollTop > 152) {
+                $sidebar.css({
+                    'top': positionFixed,
+                    'position': 'fixed',
+                    'width': $sidebar.width()
+                });
+            } else {
+                $sidebar.removeAttr("style");
+            }
+        }
+    });
+}
+
 function initFancybox() {
     var $nhandongia = $('.nhan-bao-gia');
     var visited = $.cookie('visited');
@@ -120,6 +144,7 @@ exports.init = function () {
     initProtectedContent();
     initGoToTop();
     initFixedMenu();
+    initFixedSidebar();
     initFancybox();
     intHandleFormContact();
     initFlickity();

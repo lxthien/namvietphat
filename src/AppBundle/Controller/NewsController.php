@@ -300,12 +300,11 @@ class NewsController extends Controller
 
             $src = !is_bool($this->convertImages->webpConvert2($src, '')) ? $this->convertImages->webpConvert2($src, '') : $src;
 
-            $img->setAttribute('data-src', $src);
+            $img->setAttribute('src', $src);
+            $img->setAttribute('loading', 'lazy');
             $img->setAttribute('alt', $alt);
-            $img->setAttribute('width', !empty($width) ? $width > 900 ? 900 : $width : 500);
-            $img->setAttribute('height', !empty($height) ? $width > 900 ? round(($height*900)/$width) : $height : 500);
-            $img->setAttribute('class', 'lazyload');
-            $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+            $img->setAttribute('width', !empty($width) ? $width > 800 ? 800 : $width : 500);
+            $img->setAttribute('height', !empty($height) ? $width > 800 ? round(($height*800)/$width) : $height : 500);
         }
         
         return html_entity_decode($dom->saveHTML());
@@ -509,7 +508,7 @@ class NewsController extends Controller
             ->setParameter('enable', 1)
             ->orderBy('p.createdAt', 'DESC')
             ->groupBy('p.id')
-            ->setMaxResults(10)
+            ->setMaxResults(20)
             ->getQuery()->getResult();
 
         return $this->render('news/recent.html.twig', [
@@ -533,7 +532,7 @@ class NewsController extends Controller
             ->setParameter('enable', 1)
             ->orderBy('p.viewCounts', 'DESC')
             ->groupBy('p.id')
-            ->setMaxResults(10)
+            ->setMaxResults(20)
             ->getQuery()->getResult();
 
         return $this->render('news/hot.html.twig', [
