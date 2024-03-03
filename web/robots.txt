@@ -3,5 +3,4 @@ User-agent: *
 Disallow: /admin
 Disallow: /tags/
 Disallow: /search?q=*
-Allow: /sitemap.htm
 Sitemap: https://www.namvietphatcorp.com/sitemap.xml

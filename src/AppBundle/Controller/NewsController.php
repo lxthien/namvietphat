@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use AppBundle\Entity\NewsCategory;
 use AppBundle\Entity\News;
 use AppBundle\Entity\Comment;
@@ -120,6 +122,7 @@ class NewsController extends Controller
         );
 
         return $this->render('news/list.html.twig', [
+            'baseUrl' => !empty($level2) ? $this->generateUrl('list_category', array('level1' => $level1, 'level2' => $level2), UrlGeneratorInterface::ABSOLUTE_URL) : $this->generateUrl('news_category', array('level1' => $level1), UrlGeneratorInterface::ABSOLUTE_URL),
             'category' => !empty($level2) ? $subCategory : $category,
             'listCategories' => count($listCategories) > 0 ? $listCategories : NULL,
             'pagination' => $pagination
@@ -302,7 +305,7 @@ class NewsController extends Controller
 
             $img->setAttribute('src', $src);
             $img->setAttribute('loading', 'lazy');
-            $img->setAttribute('alt', $alt);
+            $img->setAttribute('alt', !empty($alt) ? $alt : $post->getTitle());
             $img->setAttribute('width', !empty($width) ? $width > 800 ? 800 : $width : 500);
             $img->setAttribute('height', !empty($height) ? $width > 800 ? round(($height*800)/$width) : $height : 500);
         }
@@ -487,6 +490,7 @@ class NewsController extends Controller
         $breadcrumbs->addItem('Tags > ' . $tag->getName());
 
         return $this->render('news/tags.html.twig', [
+            'baseUrl' => $this->generateUrl('tags', array('slug' => $slug), UrlGeneratorInterface::ABSOLUTE_URL),
             'tag' => $tag,
             'pagination' => $pagination
         ]);
@@ -672,6 +676,7 @@ class NewsController extends Controller
         $breadcrumbs->addItem(ucfirst($request->query->get('q')));
 
         return $this->render('news/search.html.twig', [
+            'baseUrl' => $this->generateUrl('news_search', array('q' => $request->query->get('q')), UrlGeneratorInterface::ABSOLUTE_URL),
             'q' => ucfirst($request->query->get('q')),
             'pagination' => $pagination
         ]);
