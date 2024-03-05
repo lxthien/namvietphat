@@ -298,12 +298,11 @@ class NewsController extends Controller
 
             list($width, $height) = @getimagesize(substr($src, 1));
 
-            $img->setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
-            $img->setAttribute('data-src', $src);
-            $img->setAttribute('alt', $alt);
+            $img->setAttribute('src', $src);
+            $img->setAttribute('loading', 'lazy');
+            $img->setAttribute('alt', !empty($alt) ? $alt : $post->getTitle());
             $img->setAttribute('width', !empty($width) ? $width : 500);
             $img->setAttribute('height', !empty($height) ? $height : 500);
-            $img->setAttribute('class', 'lazyload');
         }
         
         return html_entity_decode($dom->saveHTML());

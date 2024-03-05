@@ -97,7 +97,7 @@ class Builder implements ContainerAwareInterface
 
         $menu['Xây dựng nhà']->addChild('Xây dựng nhà xưởng', [
             'route' => 'list_category',
-            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-dung-xuong']
+            'routeParameters' => ['level1' => 'xay-dung', 'level2' => 'xay-dung-nha-xuong']
         ]);
 
         return $menu;

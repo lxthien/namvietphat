@@ -21,6 +21,10 @@
     <meta property="og:description" content="{{ tag.getPageDescription() }}" />
 {% endblock %}
 
+{% block robots %}
+    <meta name="robots" content="noindex, follow" />
+{% endblock %}
+
 {% block body %}
     {# breadcrumbs #}
     {{ include('news/components/breadcrumbs.html.twig', {type: 'category', title: tag.getName(), description: tag.getContents() }) }}

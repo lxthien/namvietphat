@@ -1,5 +1,7 @@
 User-agent: *
 
 Disallow: /admin
+Disallow: /tags/
+Disallow: /search?q=*
 
 Sitemap: https://xaydungnamvietphat.com/sitemap.xml
