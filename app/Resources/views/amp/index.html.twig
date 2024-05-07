@@ -139,11 +139,11 @@
             <article role="article">
                 <h1>{{ post.title }}</h1>
                 <div class="article-content">
-                    {{ contentsAmp|replace({'0979.274.245':'0904.359.249', '0979.27.42.45':'0904.359.249'})|raw }}
+                    {{ contentsAmp|replace({'0979.274.245':'0862.4832.19', '0979.27.42.45':'0862.4832.19', '0904.359.249':'0862.4832.19'})|raw }}
                 </div>
 
                 {# List tags #}
-                {{ include('amp/tags.html.twig') }}
+                {# {{ include('amp/tags.html.twig') }} #}
 
                 {# List comments #}
                 {{ include('amp/related.html.twig') }}

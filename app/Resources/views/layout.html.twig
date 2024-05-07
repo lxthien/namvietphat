@@ -56,16 +56,39 @@
 
         <meta name="yandex-verification" content="6d3f278ed26f14b2" />
 
+        {% block localBusiness %}
+        {% endblock %}
+        
         {% block structuredOrganization %}
+            <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                "url": "https://www.namvietphatcorp.com/",
+                "logo": "https://www.namvietphatcorp.com/assets/images/logo.png",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+84979274245",
+                    "contactType": "customer service"
+                }
+            }
+            </script>
         {% endblock %}
 
         {% block structuredWebSite %}
+            <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "WebSite",
+                "url": "https://www.namvietphatcorp.com/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.namvietphatcorp.com/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+            </script>
         {% endblock %}
-
-        {% block structuredPerson %}
-        {% endblock %}
-
-        {{ get_setting('googleAnalytic')|raw }}
 
         {{ get_setting('googleTagManager1')|raw }}
 

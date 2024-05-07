@@ -1,5 +1,5 @@
 .title-list-news-items {
-    p.p-title-news-items {
+    .p-title-news-items {
         font-size: 32px;
         font-family: $firaSansCondensedBold;;
         margin: 30px 0 5px;
@@ -30,6 +30,11 @@
             &:hover, &:active {
                 text-decoration: none;
             }
+        }
+
+        h2 {
+            display: inline-block;
+            margin: 0;
         }
     }
 

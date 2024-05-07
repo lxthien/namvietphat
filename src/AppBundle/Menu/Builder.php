@@ -27,14 +27,14 @@ class Builder implements ContainerAwareInterface
         ->setLinkAttribute('data-toggle', 'dropdown')
         ->setChildrenAttribute('class', 'dropdown-menu');
 
-        $menu['Giới thiệu']->addChild('Sơ đồ tổ chức', [
-            'route' => 'news_show',
-            'routeParameters' => ['slug' => 'so-do-to-chuc']
-        ]);
-        
         $menu['Giới thiệu']->addChild('Về chúng tôi', [
             'route' => 'news_show',
             'routeParameters' => ['slug' => 'gioi-thieu-ve-nam-viet-phat']
+        ]);
+
+        $menu['Giới thiệu']->addChild('Chính sách bảo mật', [
+            'route' => 'news_show',
+            'routeParameters' => ['slug' => 'chinh-sach-bao-mat-thong-tin']
         ]);
 
         $menu['Giới thiệu']->addChild('Tuyển dụng', [

@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="col-12 col-sm-6 col-md-12 col-lg-4 footer-top-col-2">
-                <h3 class="text-uppercase">Thông tin liên hệ</h3>
+                <div class="text-uppercase widget-title">Thông tin liên hệ</div>
                 <ul class="footer-company">
                     <li>
                         <i class="fa fa-map-marker"></i> VPGD: <span>{{ get_setting('companyAddress') }}</span>
@@ -35,11 +35,11 @@
                 </ul>
             </div>
             <div class="col-12 col-sm-6 col-md-12 col-lg-3 footer-top-col-2">
-                <h3 class="text-uppercase">Từ khóa</h3>
+                <div class="text-uppercase widget-title">Từ khóa</div>
                 {{ get_setting('topKeyword')|raw }}
             </div>
             <div class="col-12 col-sm-6 col-md-12 col-lg-3 footer-top-col-3">
-                <h3 class="text-uppercase">Follow chúng tôi</h3>
+                <div class="text-uppercase widget-title">Follow chúng tôi</div>
                 <div class="footer-company">
                     <div class="fb-page"
                         data-href="https://www.facebook.com/xaydungnamvietphat/"
@@ -60,11 +60,9 @@
                         <div class="event-footer-item" itemtype="http://schema.org/Event" itemscope="">
                             <meta content="⭐Thiết kế nhà" itemprop="name">
                             <meta content="⭐Thiết kế nhà" itemprop="description">
-                            <h6>
-                                <a href="{{ path('news_category', {'level1': 'thiet-ke-nha' }) }}" itemprop="url">
-                                    <span>⭐Thiết kế nhà</span>
-                                </a>
-                            </h6>
+                            <a href="{{ path('news_category', {'level1': 'thiet-ke-nha' }) }}" itemprop="url">
+                                <span>⭐Thiết kế nhà</span>
+                            </a>
                             <meta content="2023-01-01T4:00-05:00" itemprop="startDate">
                             <meta content="2024-01-01T4:00-05:00" itemprop="endDate">
                             <meta content="https://schema.org/OnlineEventAttendanceMode" itemprop="eventAttendanceMode">
@@ -91,11 +89,9 @@
                         <div class="event-footer-item" itemtype="http://schema.org/Event" itemscope="">
                             <meta content="⭐Xây dựng nhà" itemprop="name">
                             <meta content="⭐Xây dựng nhà" itemprop="description">
-                            <h6>
-                                <a href="{{ path('news_category', {'level1': 'xay-dung' }) }}" itemprop="url">
-                                    <span>⭐Xây dựng nhà</span>
-                                </a>
-                            </h6>
+                            <a href="{{ path('news_category', {'level1': 'xay-dung' }) }}" itemprop="url">
+                                <span>⭐Xây dựng nhà</span>
+                            </a>
                             <meta content="2023-02-02T5:00-05:00" itemprop="startDate">
                             <meta content="2024-02-02T5:00-05:00" itemprop="endDate">
                             <meta content="https://schema.org/OnlineEventAttendanceMode" itemprop="eventAttendanceMode">
@@ -122,11 +118,9 @@
                         <div class="event-footer-item" itemtype="http://schema.org/Event" itemscope="">
                             <meta content="⭐Sửa chữa nhà" itemprop="name">
                             <meta content="⭐Sửa chữa nhà" itemprop="description">
-                            <h6>
-                                <a href="{{ path('news_category', {'level1': 'sua-chua-nha' }) }}" itemprop="url">
-                                    <span>⭐Sửa chữa nhà</span>
-                                </a>
-                            </h6>
+                            <a href="{{ path('news_category', {'level1': 'sua-chua-nha' }) }}" itemprop="url">
+                                <span>⭐Sửa chữa nhà</span>
+                            </a>
                             <meta content="2023-03-03T6:00-05:00" itemprop="startDate">
                             <meta content="2024-03-03T6:00-05:00" itemprop="endDate">
                             <meta content="https://schema.org/OnlineEventAttendanceMode" itemprop="eventAttendanceMode">
@@ -157,12 +151,12 @@
         <div class="row footer-middle">
             <div class="col-12 col-md-12 col-lg-2"></div>
             <div class="col-12 col-md-12 col-lg-8 text-center">
-                <h3 class="text-uppercase h3-about-us">Về chúng tôi</h3>
+                <div class="text-uppercase h3-about-us widget-title">Về chúng tôi</div>
                 <div class="footer-text-wrap">
                     {{ get_setting('siteNameDescription')|raw }}
                     {{ get_setting('dmcaScript')|raw }}
                 </div>
-                <h3 class="text-uppercase h3-social">Mạng xã hội</h3>
+                <div class="text-uppercase h3-social widget-title">Mạng xã hội</div>
                 <span class="td-social-icon-wrap">
                     <a target="_blank" href="{{ get_setting('linkToFacebook') }}" title="Nam Việt Phát trên Facebook" rel="nofollow noreferrer">
                         <i class="fab fa-facebook-f"></i>

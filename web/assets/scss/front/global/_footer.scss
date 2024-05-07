@@ -156,16 +156,14 @@ footer {
         margin-top: 20px;
 
         .event-footer-item {
-            h6 {
+            a {
+                color: $white;
                 margin-bottom: 10px;
                 font-size: 15px;
+                font-family: $firaSansCondensedBold;
 
-                a {
+                &:hover {
                     color: $white;
-
-                    &:hover {
-                        color: $white;
-                    }
                 }
             }
         }

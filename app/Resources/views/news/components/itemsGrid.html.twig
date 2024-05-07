@@ -4,7 +4,7 @@
             {% set template = 'news_290_250' %}
             
             {% if category is defined %}
-                {% set url = path('news_show', {'slug': row.getUrl(), 'cat': category.getUrl() }) %}
+                {% set url = path('news_show', {'slug': row.getUrl() }) %}
                 {% set template = category.getTemplate() == null ? 'news_290_250' : category.getTemplate() %}
             {% else %}
                 {% set url = path('news_show', {'slug': row.getUrl() }) %}
@@ -41,7 +41,7 @@
             </a>
         </div>
         <div class="news-body">
-            <h2><a title="{{ row.getTitle() }}" href="{{ url }}" title="{{ row.getTitle() }}">{{ row.getTitle() }}</a></h2>
+            <h3><a title="{{ row.getTitle() }}" href="{{ url }}" title="{{ row.getTitle() }}">{{ row.getTitle() }}</a></h3>
             <p>{{ row.getDescription()|slice(0, 130) }}</p>
         </div>
     </div>

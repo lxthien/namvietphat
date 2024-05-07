@@ -6,7 +6,7 @@
                 <div class="col-xs-6">
                     <div class="related-wrapper">
                         {% if category is defined %}
-                            {% set url = path('news_show', {'slug': row.getUrl(), 'cat': category.getUrl() }) %}
+                            {% set url = path('news_show', {'slug': row.getUrl() }) %}
                         {% else %}
                             {% set url = path('news_show', {'slug': row.getUrl() }) %}
                         {% endif %}
