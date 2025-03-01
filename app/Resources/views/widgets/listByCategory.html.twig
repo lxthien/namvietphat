@@ -1,3 +1,9 @@
 {{ render(controller(
-    'AppBundle:News:listNewsByCategory', { 'categoryId': 6, 'description':null, 'template':'news/listByCategorySideBar.html.twig' }
+    'AppBundle:News:listNewsByCategory', { 'categoryId': 1, 'title': "Mẫu nhà đẹp", 'description':null, 'template':'news/listByCategorySideBar.html.twig' }
+)) }}
+{{ render(controller(
+    'AppBundle:News:listNewsByCategory', { 'categoryId': 15, 'title': "Dự án tiêu biểu", 'description':null, 'template':'news/listByCategorySideBar.html.twig' }
+)) }}
+{{ render(controller(
+    'AppBundle:News:listNewsByCategory', { 'categoryId': 6, 'title': null, 'description':null, 'template':'news/listByCategorySideBar.html.twig' }
 )) }}

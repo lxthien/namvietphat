@@ -1,6 +1,6 @@
 <div class="list-group">
     <div class="list-group-item list-group-item-action active text-uppercase">
-        {{ category.getName() }}
+        {{ title is not null ? title : category.getName() }}
     </div>
     <div class="row">
         {% for row in posts %}
