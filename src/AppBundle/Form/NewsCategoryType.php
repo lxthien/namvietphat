@@ -41,6 +41,10 @@ class NewsCategoryType extends AbstractType
                 'required' => false,
                 'label' => 'label.enable',
             ])
+            ->add('displayBreadcrumLikeCategory', CheckboxType::class, [
+                'required' => false,
+                'label' => 'Display Breadcrum Like Category',
+            ])
             ->add('template', TextType::class, [
                 'required' => false,
                 'label' => 'Template',

@@ -5,8 +5,16 @@
                 {# Breadcrum #}
                 {{ wo_render_breadcrumbs() }}
 
-                {% if type is defined and type is not null %}
+                {% if type is defined and type == "category" %}
                     <h1 class="title">{{ title }}</h1>
+
+                    <div class="description">
+                        <p>{{ description|raw }}</p>
+                    </div>
+                {% endif %}
+
+                {% if type is defined and type == "post" %}
+                    <h2 class="title">{{ title }}</h2>
 
                     <div class="description">
                         <p>{{ description|raw }}</p>

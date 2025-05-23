@@ -24,11 +24,18 @@
 {% endblock %}
 
 {% block body %}
+    {% if category.getDisplayBreadcrumLikeCategory() == true %}
+        {{ include('news/components/breadcrumbs.html.twig',
+            { type: 'post', title: category.getName()|replace({'%YEAR%': "now"|date('Y')}), description: category.getDescription()|replace({'%YEAR%': "now"|date('Y')}) })
+        }}
+    {% endif %}
+
     <div class="container wrapper-container wrapper-post-container">
         <div class="row post-container">
             <div class="col-12 col-md-12 col-lg-8 wrapper-post-container-left">
-                {{ include('news/components/breadcrumbs.html.twig') }}
-
+                {% if category.getDisplayBreadcrumLikeCategory() == false %}
+                    {{ include('news/components/breadcrumbs.html.twig') }}
+                {% endif %}
                 <article id="post-{{ post.getId() }}" class="news hentry">
                     <h1 class="entry-title block-title">{{ post.getTitle() }}</h1>
                     

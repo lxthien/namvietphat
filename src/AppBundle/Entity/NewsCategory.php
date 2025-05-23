@@ -66,6 +66,13 @@ class NewsCategory
     private $enable = true;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="displayBreadcrumLikeCategory", type="boolean")
+     */
+    private $displayBreadcrumLikeCategory = false;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="template", type="string", length=255, nullable=true)
@@ -208,6 +215,18 @@ class NewsCategory
     public function getEnable()
     {
         return $this->enable;
+    }
+
+    public function setDisplayBreadcrumLikeCategory($displayBreadcrumLikeCategory)
+    {
+        $this->displayBreadcrumLikeCategory = (bool) $displayBreadcrumLikeCategory;
+
+        return $this;
+    }
+
+    public function getDisplayBreadcrumLikeCategory()
+    {
+        return $this->displayBreadcrumLikeCategory;
     }
 
     public function setTemplate($template)

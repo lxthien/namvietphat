@@ -9,13 +9,13 @@
         "highlight.js": "^9.12.0",
         "imports-loader": "^0.7.1",
         "jquery": "^3.3.1",
-        "node-sass": "^4.11.0",
+        "node-sass": "^8.0.0",
         "sass-loader": "^6.0.5",
         "typeahead.js": "^0.11.1"
     },
     "scripts": {
         "dev-server": "./node_modules/.bin/encore dev-server",
-        "dev": "./node_modules/.bin/encore dev",
+        "dev": "./node_modules/.bin/encore dev --openssl-legacy-provider",
         "watch": "./node_modules/.bin/encore dev --watch",
         "build": "./node_modules/.bin/encore production"
     },
